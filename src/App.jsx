@@ -9,6 +9,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import './App.css'
 import AddLocation from './pages/AddLocation/AddLocation'
+import * as locationService from './services/locations'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
