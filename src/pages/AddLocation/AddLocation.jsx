@@ -1,15 +1,34 @@
-import { useState } from "react"
+
+import { useState, useRef, useEffect } from "react"
 
 function AddLocation(props) {
+  const formElement = useRef()
+  const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
 		name: '',
 		description: '',
 	})
 
+  useEffect(()=> {
+    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+  }, [formData])
+
+  const handleChange = evt => {
+  setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    const locationFormData = new FormData()
+    locationFormData.append('name', formData.name)
+    locationFormData.append('description', formData.description)
+    //props.handleAddPuppy(puppyFormData)
+  }
+
 	return (
 		<>
 			<h1>Add Location</h1>
-			<form autoComplete="off">
+			<form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
 					<label htmlFor="name-input" className="form-label">
 						Location Name
@@ -20,6 +39,7 @@ function AddLocation(props) {
 						id="name-input"
 						name="name"
             value={formData.name}
+            onChange={handleChange}
 					/>
 				</div>
 				<div className="form-group mb-3">
@@ -32,8 +52,16 @@ function AddLocation(props) {
 						id="description-input"
 						name="description"
             value={formData.description}
+            onChange={handleChange}
 					/>
 				</div>
+        <button
+						type="submit"
+						className="btn btn-primary btn-fluid"
+						disabled={!validForm}
+					>
+						Add Swim Location
+					</button>
 			</form>
 		</>
 	)
