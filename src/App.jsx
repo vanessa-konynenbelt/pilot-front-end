@@ -7,6 +7,8 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import './App.css'
+import AddLocation from './pages/AddLocation/AddLocation'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -43,6 +45,9 @@ const App = () => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
         />
+         <Route 
+          path='/add-location' 
+          element={<AddLocation />} />
       </Routes>
     </>
   )
