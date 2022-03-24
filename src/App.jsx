@@ -9,7 +9,9 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import './App.css'
 import AddLocation from './pages/AddLocation/AddLocation'
+import LocationList from "./pages/LocationList/LocationList"
 import * as locationService from './services/locations'
+
 
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
@@ -64,6 +66,9 @@ import * as locationService from './services/locations'
         <Route 
           path='/add-location' 
           element={<AddLocation handleAddLocation={handleAddLocation} />} />
+        <Route 
+          path='/locations'
+          element= {<LocationList locations={locations} />}/>
       </Routes>
     </>
   )
