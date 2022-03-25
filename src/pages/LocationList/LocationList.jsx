@@ -6,7 +6,7 @@ function LocationList(props) {
     <>
       <h1>Locations!!</h1>
       <div>
-        {props.locations.map(location => (
+        {props.locations?.map(location => (
 
           <div key={location._id}>
             <p>Location Name: {location.name}</p>

@@ -1,9 +1,11 @@
-const BASE_URL = '/api/locations'
+import * as tokenService from './tokenService'
+const BASE_URL =  `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/locations`
 
 function create(location) {
   return fetch(BASE_URL, {
     method: 'POST',
-    headers: {'content-type': 'application/json'},
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`, 
+    'content-type': 'application/json'},
     body: JSON.stringify(location)
   })
   .then(res => res.json())
