@@ -7,6 +7,11 @@ function AddLocation(props) {
   const [formData, setFormData] = useState({
 		name: '',
 		description: '',
+		entryPoints: '',
+		rating: '',
+		comments: '',
+		pictures: '',
+
 	})
 
   useEffect(()=> {
@@ -39,7 +44,7 @@ function AddLocation(props) {
             value={formData.name}
             onChange={handleChange}
 					/>
-				</div>
+				</div><br />
 				<div className="form-group mb-3">
 					<label htmlFor="description-input" className="form-label">
 						Location Description
@@ -52,7 +57,7 @@ function AddLocation(props) {
             value={formData.description}
             onChange={handleChange}
 					/>
-				</div>
+				</div><br />
 				<div className="form-group mb-3">
 					<label htmlFor="name-input" className="form-label">
 						Entry Points
@@ -66,7 +71,7 @@ function AddLocation(props) {
             value={formData.entryPoints}
             onChange={handleChange}
 					/>
-				</div>
+				</div><br />
 				<div className="form-group mb-3">
 					<label htmlFor="rating-input" className="form-label">
 						Rating
@@ -80,7 +85,7 @@ function AddLocation(props) {
             value={formData.rating}
             onChange={handleChange}
 					/>
-				</div>
+				</div><br />
 				<div className="form-group mb-3">
 					<label htmlFor="comment-input" className="form-label">
 						Comments
@@ -94,7 +99,7 @@ function AddLocation(props) {
             value={formData.comments}
             onChange={handleChange}
 					/>
-				</div>
+				</div><br />
 				<div className="form-group mb-3">
 					<label htmlFor="pictures-input" className="form-label">
 						Pictures
@@ -108,7 +113,7 @@ function AddLocation(props) {
             value={formData.pictures}
             onChange={handleChange}
 					/>
-				</div>
+				</div><br />
         <button
 						type="submit"
 						className="btn btn-primary btn-fluid"
