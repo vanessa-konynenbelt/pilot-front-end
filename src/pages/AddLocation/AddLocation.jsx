@@ -41,7 +41,7 @@ function AddLocation(props) {
 					/>
 				</div>
 				<div className="form-group mb-3">
-					<label htmlFor="breed-input" className="form-label">
+					<label htmlFor="description-input" className="form-label">
 						Location Description
 					</label>
 					<input 
@@ -50,6 +50,62 @@ function AddLocation(props) {
 						id="description-input"
 						name="description"
             value={formData.description}
+            onChange={handleChange}
+					/>
+				</div>
+				<div className="form-group mb-3">
+					<label htmlFor="name-input" className="form-label">
+						Entry Points
+					</label>
+					<input 
+						type="text"
+						className="form-control"
+						id="entry-input"
+						name="entryPoints"
+						required
+            value={formData.entryPoints}
+            onChange={handleChange}
+					/>
+				</div>
+				<div className="form-group mb-3">
+					<label htmlFor="rating-input" className="form-label">
+						Rating
+					</label>
+					<input 
+						type="Number"
+						className="form-control"
+						id="rating-input"
+						name="rating"
+						required
+            value={formData.rating}
+            onChange={handleChange}
+					/>
+				</div>
+				<div className="form-group mb-3">
+					<label htmlFor="comment-input" className="form-label">
+						Comments
+					</label>
+					<input 
+						type="text"
+						className="form-control"
+						id="comment-input"
+						name="comments"
+						required
+            value={formData.comments}
+            onChange={handleChange}
+					/>
+				</div>
+				<div className="form-group mb-3">
+					<label htmlFor="pictures-input" className="form-label">
+						Pictures
+					</label>
+					<input 
+						type="text"
+						className="form-control"
+						id="name-input"
+						name="pictures"
+						required
+            value={formData.pictures}
             onChange={handleChange}
 					/>
 				</div>
