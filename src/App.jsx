@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -9,10 +9,21 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import './App.css'
 import AddLocation from './pages/AddLocation/AddLocation'
+import LocationList from "./pages/LocationList/LocationList"
+import * as locationService from './services/locations'
 
-const App = () => {
-  const [user, setUser] = useState(authService.getUser())
-  const navigate = useNavigate()
+
+  const App = () => {
+    const [user, setUser] = useState(authService.getUser())
+    const navigate = useNavigate()
+    const [locations, setLocations] = useState([])
+
+
+  const handleAddLocation = async newLocationData => {
+    const newLocation = await locationService.create(newLocationData)
+    setLocations([...locations, newLocation])
+    navigate('/')
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -23,6 +34,13 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+
+  useEffect(() => {
+    locationService.getAll()
+    .then(allLocations => setLocations(allLocations))
+  }, [])
+
+
 
   return (
     <>
@@ -45,9 +63,12 @@ const App = () => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
         />
-         <Route 
+        <Route 
           path='/add-location' 
-          element={<AddLocation />} />
+          element={<AddLocation handleAddLocation={handleAddLocation} />} />
+        <Route 
+          path='/locations'
+          element= {<LocationList locations={locations} />}/>
       </Routes>
     </>
   )

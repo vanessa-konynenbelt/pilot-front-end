@@ -22,7 +22,7 @@ function AddLocation(props) {
     const locationFormData = new FormData()
     locationFormData.append('name', formData.name)
     locationFormData.append('description', formData.description)
-    //props.handleAddPuppy(puppyFormData)
+    props.handleAddLocation(locationFormData)
   }
 
 	return (
