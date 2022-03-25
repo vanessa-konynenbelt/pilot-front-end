@@ -16,14 +16,20 @@ import * as locationService from './services/locations'
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
     const navigate = useNavigate()
-    const [locations, setLocations] = useState([])
+    const [locations, setLocations] = useState(null)
 
 
   const handleAddLocation = async newLocationData => {
+    console.log('NEW LOCATION', newLocationData)
     const newLocation = await locationService.create(newLocationData)
+    console.log('HIIIIIIIIIII', newLocation)
     setLocations([...locations, newLocation])
     navigate('/')
   }
+
+  useEffect(() => {
+    console.log(locations)
+  }, [locations])
 
   const handleLogout = () => {
     authService.logout()

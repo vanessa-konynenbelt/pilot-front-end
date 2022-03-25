@@ -19,10 +19,7 @@ function AddLocation(props) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    const locationFormData = new FormData()
-    locationFormData.append('name', formData.name)
-    locationFormData.append('description', formData.description)
-    props.handleAddLocation(locationFormData)
+    props.handleAddLocation(formData)
   }
 
 	return (
@@ -38,6 +35,7 @@ function AddLocation(props) {
 						className="form-control"
 						id="name-input"
 						name="name"
+						required
             value={formData.name}
             onChange={handleChange}
 					/>
