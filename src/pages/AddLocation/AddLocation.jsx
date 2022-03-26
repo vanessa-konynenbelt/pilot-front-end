@@ -1,5 +1,6 @@
 
 import { useState, useRef, useEffect } from "react"
+// import { getLocation } from '../../services/locations'
 
 function AddLocation(props) {
   const formElement = useRef()
@@ -7,6 +8,10 @@ function AddLocation(props) {
   const [formData, setFormData] = useState({
 		name: '',
 		description: '',
+		entryPoints: '',
+		rating: '',
+		// comments: '',
+		pictures: '',
 	})
 
   useEffect(()=> {
@@ -19,6 +24,10 @@ function AddLocation(props) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
+		// getLocation(formData.name)
+		// .then(locationData => {
+		// 	console.log('TESTING', locationData.name)
+		// })
     props.handleAddLocation(formData)
   }
 
@@ -62,7 +71,6 @@ function AddLocation(props) {
 						className="form-control"
 						id="entry-input"
 						name="entryPoints"
-						required
             value={formData.entryPoints}
             onChange={handleChange}
 					/>
@@ -81,7 +89,7 @@ function AddLocation(props) {
             onChange={handleChange}
 					/>
 				</div>
-				<div className="form-group mb-3">
+				{/* <div className="form-group mb-3">
 					<label htmlFor="comment-input" className="form-label">
 						Comments
 					</label>
@@ -90,11 +98,10 @@ function AddLocation(props) {
 						className="form-control"
 						id="comment-input"
 						name="comments"
-						required
             value={formData.comments}
             onChange={handleChange}
 					/>
-				</div>
+				</div> */}
 				<div className="form-group mb-3">
 					<label htmlFor="pictures-input" className="form-label">
 						Pictures
@@ -104,7 +111,6 @@ function AddLocation(props) {
 						className="form-control"
 						id="name-input"
 						name="pictures"
-						required
             value={formData.pictures}
             onChange={handleChange}
 					/>
