@@ -10,6 +10,8 @@ const SignupForm = props => {
     email: '',
     password: '',
     passwordConf: '',
+    location: '',
+    skillLevel: '',
   })
 
   const handleChange = e => {
@@ -31,7 +33,11 @@ const SignupForm = props => {
     }
   }
 
-  const { name, email, password, passwordConf } = formData
+  const handleChangePhoto = (evt) => {
+    setFormData({...formData, photo: evt.target.files[0]})
+  }
+
+  const { name, email, password, passwordConf, location, skillLevel } = formData
 
   const isFormInvalid = () => {
     return !(name && email && password && password === passwordConf)
@@ -87,6 +93,40 @@ const SignupForm = props => {
           value={passwordConf}
           name="passwordConf"
           onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="location" className={styles.label}>Your location</label>
+        <input
+          type="text"
+          autoComplete="off"
+          id="location"
+          value={location}
+          name="location"
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="skillLevel" className={styles.label}>Skill Level</label>
+        <input
+          type="number"
+          autoComplete="off"
+          id="skillLevel"
+          value={skillLevel}
+          name="skillLevel"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="form-group mb-4">
+        <label htmlFor="photo-upload" className="form-label">
+          Upload Photo
+        </label>
+        <input
+          type="file"
+          className="form-control"
+          id="photo-upload"
+          name="photo"
+          onChange={handleChangePhoto}
         />
       </div>
       <div className={styles.inputContainer}>
