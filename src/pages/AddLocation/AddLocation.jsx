@@ -1,9 +1,10 @@
 
 import { useState, useRef, useEffect } from "react"
-// import { getLocation } from '../../services/locations'
+import { getLocation } from '../../services/locations'
 
 function AddLocation(props) {
   const formElement = useRef()
+	const [locationData, setLocationData] = useState([])
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
 		name: '',
@@ -18,16 +19,17 @@ function AddLocation(props) {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
 
+
   const handleChange = evt => {
   setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
   const handleSubmit = evt => {
     evt.preventDefault()
-		// getLocation(formData.name)
-		// .then(locationData => {
-		// 	console.log('TESTING', locationData.name)
-		// })
+		getLocation(formData.name)
+		.then(locationData => {
+			setLocationData(locationData)
+		}, [])
     props.handleAddLocation(formData)
   }
 

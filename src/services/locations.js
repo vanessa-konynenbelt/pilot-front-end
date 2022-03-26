@@ -16,13 +16,14 @@ function getAll() {
   .then(res => res.json())
 }
 
-// function getLocation(name) {
-//   return fetch (`/api/locations/${name}`)
-//   .then(res => res.json)
-// }
+function getLocation(name) {
+  console.log("HELLLLOOOOOO", name)
+  return fetch (`/api/locations/${name}`)
+  .then(res => res.json)
+}
 
 export {
   create,
   getAll,
-  // getLocation,
+  getLocation,
 }

@@ -1,4 +1,4 @@
-
+import { getLocation } from "../../services/locations"
 
 function LocationList(props) {
   console.log(props.locations)
@@ -15,6 +15,7 @@ function LocationList(props) {
             <p>Rating: {location.rating}</p>
             {/* <p>Comments: {location.comments}</p> */}
             <p>Pictures: {location.pictures}</p>
+            <img src={getLocation()} alt="map" />
           </div>
         ))}
       </div>
