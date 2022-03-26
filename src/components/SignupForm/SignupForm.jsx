@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
+import HoverRating from './HoverRating'
 
 const SignupForm = props => {
   const navigate = useNavigate()
@@ -108,18 +109,19 @@ const SignupForm = props => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="skillLevel" className={styles.label}>Skill Level</label>
-        <input
+        <HoverRating></HoverRating>
+        {/* <input
           type="number"
           autoComplete="off"
           id="skillLevel"
           value={skillLevel}
           name="skillLevel"
           onChange={handleChange}
-        />
+        /> */}
       </div>
       <div className="form-group mb-4">
         <label htmlFor="photo-upload" className="form-label">
-          Upload Photo
+          Upload Photo  
         </label>
         <input
           type="file"
@@ -128,7 +130,7 @@ const SignupForm = props => {
           name="photo"
           onChange={handleChangePhoto}
         />
-      </div>
+      </div> <br/>
       <div className={styles.inputContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
