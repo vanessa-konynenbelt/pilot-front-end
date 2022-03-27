@@ -81,7 +81,9 @@ import EditLocation from './pages/EditLocation/EditLocation'
           <Route
           path="/location-page"
           element={<LocationDetails locations={locations} />}/>
-        
+        <Route 
+          path='/edit' 
+          element= {<EditLocation />}/>
           
         
       </Routes>
