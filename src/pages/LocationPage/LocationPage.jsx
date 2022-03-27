@@ -1,6 +1,6 @@
 import { getAll } from "../../services/locations";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const LocationDetails = (props) => {
   const [locationDetails, setLocationDetails] = useState({})
@@ -16,8 +16,10 @@ const LocationDetails = (props) => {
       <h1>Location Details</h1>
           <div>
             <p>{locationDetails.name}</p>
-            <p>{locationDetails.description}</p>
-
+            <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
+            <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
+            <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p>
+            <Link to='/locations'>Back to All Locations</Link>
           </div>
     </>
    );
