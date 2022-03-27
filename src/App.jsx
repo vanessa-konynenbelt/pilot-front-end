@@ -26,7 +26,7 @@ import * as locationService from './services/locations'
     const newLocation = await locationService.create(newLocationData)
     console.log('HIIIIIIIIIII', newLocation)
     setLocations([...locations, newLocation])
-    navigate('/')
+    navigate('/locations')
   }
 
   useEffect(() => {
