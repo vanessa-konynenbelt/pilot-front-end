@@ -27,7 +27,7 @@ function EditLocation(props) {
 
   return (
 		<>
-			<h1>Add Location</h1>
+			<h1>Edit Location</h1>
 			<form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
 					<label htmlFor="name-input" className="form-label">
@@ -116,13 +116,11 @@ function EditLocation(props) {
 						className="btn btn-primary btn-fluid"
 						disabled={!validForm}
 					>
-						Add Swim Location
+						Update Deets
 					</button>
 			</form>
 		</>
 	)
-
-
 }
 
 export default EditLocation

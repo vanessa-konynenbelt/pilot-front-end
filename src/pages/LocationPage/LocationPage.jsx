@@ -19,7 +19,16 @@ const LocationDetails = (props) => {
             <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
             <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
             <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p>
+          <div className="edit-btn">
+        <Link
+          className='btn btn-sm btn-warning'
+          to='/edit'
+          state={{location}}
+        >
+          Edit Deets
+        </Link><br />
             <Link to='/locations'>Back to All Locations</Link>
+          </div>
           </div>
     </>
    );
