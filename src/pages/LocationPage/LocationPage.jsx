@@ -1,5 +1,5 @@
 import { getAll } from "../../services/locations";
-import { useEffect, useState } from "react";
+import { useEffect, useState, } from "react";
 import { useLocation, Link } from "react-router-dom";
 
 const LocationDetails = (props) => {
@@ -10,7 +10,24 @@ const LocationDetails = (props) => {
     getAll(location.state.location.name)
     setLocationDetails(location.state.location)
   }, [])
-  
+
+
+
+  const [commentData, setCommentData] = useState({
+		comments: '',
+	})
+
+  const handleChange = evt => {
+  setCommentData({ ...commentData, [evt.target.name]: evt.target.value })
+  }
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    const commentFormData = new FormData()
+    commentFormData.append('comment', commentData.comments)
+    props.handleAddComment(commentData)
+  }
+
   return ( 
     <>
       <h1>Location Details</h1>
@@ -31,9 +48,8 @@ const LocationDetails = (props) => {
             <Link to='/locations'>Back to All Locations</Link>
           </div>
           </div>
-
-            				<div className="form-group mb-3">
-
+          <form onSubmit={handleSubmit}>
+          <div className="form-group mb-3">
 					<label htmlFor="comment-input" className="form-label">
 						Comments
 					</label>
@@ -42,17 +58,39 @@ const LocationDetails = (props) => {
 						className="form-control"
 						id="comment-input"
 						name="comments"
+            onChange={handleChange}
 					/>
 				</div>
-          </div>
           <button
 						type="submit"
 						className="btn btn-primary btn-fluid"
 					>
 						Add Comment
 					</button><br></br>
+          </form>
           <Link to='/locations'>Back to All Locations</Link>
-
+      {commentData.comments > 0 ?
+          <table>
+      <thead>
+        <tr>
+          <th>Comment</th>
+          <th>Posted By</th>
+        </tr>
+    </thead>
+    <tbody>
+      { commentData.comments.forEach(function(comment) {
+        <tr>
+          <td>{comment}</td>
+          <td>{comment}</td>
+        </tr> 
+      })}
+    </tbody>
+    </table>
+    :
+    <>
+    <h3>No Comments Yet</h3>
+    </>
+    }
     </>
    );
 }

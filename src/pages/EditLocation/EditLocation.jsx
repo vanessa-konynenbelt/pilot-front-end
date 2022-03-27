@@ -3,9 +3,10 @@ import { Link, useLocation } from 'react-router-dom'
 
 function EditLocation(props) {
   const location = useLocation()
+	const [formData, setFormData] = useState(location.state.location)
   const [validForm, setValidForm] = useState(true)
   const formElement = useRef()
-  const [formData, setFormData] = useState(location.state.location)
+  
 
 
   const handleChange = evt => {
