@@ -9,7 +9,7 @@ function AddLocation(props) {
 		description: '',
 		entryPoints: '',
 		rating: '',
-		comments: '',
+// 		comments: '',
 		pictures: '',
 
 	})
@@ -67,7 +67,6 @@ function AddLocation(props) {
 						className="form-control"
 						id="entry-input"
 						name="entryPoints"
-						required
             value={formData.entryPoints}
             onChange={handleChange}
 					/>
@@ -85,8 +84,13 @@ function AddLocation(props) {
             value={formData.rating}
             onChange={handleChange}
 					/>
+<<<<<<< location-deets
+				</div>
+				{/* <div className="form-group mb-3">
+=======
 				</div><br />
 				<div className="form-group mb-3">
+>>>>>>> main
 					<label htmlFor="comment-input" className="form-label">
 						Comments
 					</label>
@@ -98,8 +102,13 @@ function AddLocation(props) {
 						required
             value={formData.comments}
             onChange={handleChange}
+<<<<<<< location-deets
+					/> */}
+				{/* </div> */}
+=======
 					/>
 				</div><br />
+>>>>>>> main
 				<div className="form-group mb-3">
 					<label htmlFor="pictures-input" className="form-label">
 						Pictures
@@ -109,7 +118,6 @@ function AddLocation(props) {
 						className="form-control"
 						id="name-input"
 						name="pictures"
-						required
             value={formData.pictures}
             onChange={handleChange}
 					/>

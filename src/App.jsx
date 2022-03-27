@@ -5,12 +5,14 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import LocationDetails from './pages/LocationPage/LocationPage'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import './App.css'
 import AddLocation from './pages/AddLocation/AddLocation'
 import LocationList from "./pages/LocationList/LocationList"
 import * as locationService from './services/locations'
+
 
 
   const App = () => {
@@ -75,6 +77,10 @@ import * as locationService from './services/locations'
         <Route 
           path='/locations'
           element= {<LocationList locations={locations} />}/>
+          <Route
+          path="/location-page"
+          element={<LocationDetails locations={locations} />}/>
+        
       </Routes>
     </>
   )
