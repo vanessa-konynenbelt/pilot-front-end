@@ -21,9 +21,9 @@ function EditLocation(props) {
 		props.handleUpdateLocation(locationFormData)
 	}
 
-	const handleChangePhoto = (evt) => {
-		setFormData({...formData, photo: evt.target.files[0]})
-	}
+	// const handleChangePhoto = (evt) => {
+	// 	setFormData({...formData, photo: evt.target.files[0]})
+	// }
 
   return (
 		<>
@@ -111,13 +111,14 @@ function EditLocation(props) {
             onChange={handleChange}
 					/>
 				</div><br />
-        <button
+        <Link
+            to="/location-page"
 						type="submit"
 						className="btn btn-primary btn-fluid"
 						disabled={!validForm}
 					>
 						Update Deets
-					</button>
+					</Link>
 			</form>
 		</>
 	)

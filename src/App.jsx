@@ -34,6 +34,15 @@ import EditLocation from './pages/EditLocation/EditLocation'
     console.log(locations)
   }, [locations])
 
+  const handleUpdateLocation= updatedLocationData => {
+    const newLocationsArray = locations.map(location => 
+      location._id === updatedLocationData._id ? updatedLocationData : location
+    )
+    setLocations(newLocationsArray)
+		navigate('/')
+  }
+  
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -83,7 +92,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
           element={<LocationDetails locations={locations} />}/>
         <Route 
           path='/edit' 
-          element= {<EditLocation />}/>
+          element= {<EditLocation handleUpdateLocation={handleUpdateLocation} />}/>
           
         
       </Routes>
