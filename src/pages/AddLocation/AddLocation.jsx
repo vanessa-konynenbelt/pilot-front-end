@@ -1,22 +1,24 @@
 
 import { useState, useRef, useEffect } from "react"
+import { getLocation } from '../../services/locations'
 
 function AddLocation(props) {
   const formElement = useRef()
+	const [locationData, setLocationData] = useState([])
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
 		name: '',
 		description: '',
 		entryPoints: '',
 		rating: '',
-// 		comments: '',
+		// comments: '',
 		pictures: '',
-
 	})
 
   useEffect(()=> {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
+
 
   const handleChange = evt => {
   setFormData({ ...formData, [evt.target.name]: evt.target.value })
@@ -24,6 +26,10 @@ function AddLocation(props) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
+		getLocation(formData.name)
+		.then(locationData => {
+			setLocationData(locationData)
+		}, [])
     props.handleAddLocation(formData)
   }
 
@@ -84,13 +90,10 @@ function AddLocation(props) {
             value={formData.rating}
             onChange={handleChange}
 					/>
-<<<<<<< location-deets
+
 				</div>
 				{/* <div className="form-group mb-3">
-=======
-				</div><br />
-				<div className="form-group mb-3">
->>>>>>> main
+
 					<label htmlFor="comment-input" className="form-label">
 						Comments
 					</label>
@@ -99,16 +102,12 @@ function AddLocation(props) {
 						className="form-control"
 						id="comment-input"
 						name="comments"
-						required
             value={formData.comments}
             onChange={handleChange}
-<<<<<<< location-deets
 					/> */}
 				{/* </div> */}
-=======
 					/>
-				</div><br />
->>>>>>> main
+
 				<div className="form-group mb-3">
 					<label htmlFor="pictures-input" className="form-label">
 						Pictures

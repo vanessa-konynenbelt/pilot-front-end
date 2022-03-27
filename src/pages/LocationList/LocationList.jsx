@@ -1,6 +1,7 @@
 import { getLocation } from "../../services/locations"
 import { Link } from "react-router-dom"
 
+
 function LocationList(props) {
   
   return (
