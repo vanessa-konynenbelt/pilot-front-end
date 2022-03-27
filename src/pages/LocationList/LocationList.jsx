@@ -17,7 +17,7 @@ function LocationList(props) {
           <div key={location._id}>
             <p>Location Name: {location.name}</p>
             <p>Description: {location.description}</p>
-            <img src={getLocation()} alt="map" />
+            <div id="myMap" ></div>
           </div>
           </Link>
         ))}

@@ -17,7 +17,7 @@ function getAll() {
 }
 
 function getLocation(name) {
-  console.log("HELLLLOOOOOO", name)
+   new Map('#MyMap')
   return fetch (`/api/locations/${name}`)
   .then(res => res.json)
 }
