@@ -19,6 +19,7 @@ const LocationDetails = (props) => {
             <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
             <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
             <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p>
+
           <div className="edit-btn">
         <Link
           className='btn btn-sm btn-warning'
@@ -30,6 +31,28 @@ const LocationDetails = (props) => {
             <Link to='/locations'>Back to All Locations</Link>
           </div>
           </div>
+
+            				<div className="form-group mb-3">
+
+					<label htmlFor="comment-input" className="form-label">
+						Comments
+					</label>
+					<input 
+						type="text"
+						className="form-control"
+						id="comment-input"
+						name="comments"
+					/>
+				</div>
+          </div>
+          <button
+						type="submit"
+						className="btn btn-primary btn-fluid"
+					>
+						Add Comment
+					</button><br></br>
+          <Link to='/locations'>Back to All Locations</Link>
+
     </>
    );
 }
