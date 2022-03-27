@@ -106,8 +106,6 @@ function AddLocation(props) {
             onChange={handleChange}
 					/> */}
 				{/* </div> */}
-					/>
-
 				<div className="form-group mb-3">
 					<label htmlFor="pictures-input" className="form-label">
 						Pictures
