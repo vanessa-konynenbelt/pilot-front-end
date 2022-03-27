@@ -3,9 +3,10 @@ import { Link, useLocation } from 'react-router-dom'
 
 function EditLocation(props) {
   const location = useLocation()
-  const [formData, setFormData] = useState(location.state.location)
   const [validForm, setValidForm] = useState(true)
   const formElement = useRef()
+  const [formData, setFormData] = useState(location.state.location)
+
 
   const handleChange = evt => {
     setFormData({...formData, [evt.target.name]: evt.target.value })
@@ -18,12 +19,14 @@ function EditLocation(props) {
   const handleSubmit = evt => {
 		evt.preventDefault()
 		const locationFormData = new FormData()
+    locationFormData.append('name', formData.name)
+		locationFormData.append('description', formData.description)
+		locationFormData.append('entryPoints', formData.entryPoints)
+		locationFormData.append('rating', formData.rating)
+    locationFormData.append('_id', formData._id) 
 		props.handleUpdateLocation(locationFormData)
 	}
 
-	// const handleChangePhoto = (evt) => {
-	// 	setFormData({...formData, photo: evt.target.files[0]})
-	// }
 
   return (
 		<>
@@ -78,47 +81,22 @@ function EditLocation(props) {
 						className="form-control"
 						id="rating-input"
 						name="rating"
-						required
             value={formData.rating}
             onChange={handleChange}
 					/>
 
 				</div>
-				{/* <div className="form-group mb-3">
-
-					<label htmlFor="comment-input" className="form-label">
-						Comments
-					</label>
-					<input 
-						type="text"
-						className="form-control"
-						id="comment-input"
-						name="comments"
-            value={formData.comments}
-            onChange={handleChange}
-					/> */}
-				{/* </div> */}
-				<div className="form-group mb-3">
-					<label htmlFor="pictures-input" className="form-label">
-						Pictures
-					</label>
-					<input 
-						type="text"
-						className="form-control"
-						id="name-input"
-						name="pictures"
-            value={formData.pictures}
-            onChange={handleChange}
-					/>
-				</div><br />
-        <Link
-            to="/location-page"
+				<br />
+        <div className="update-btn">
+        <button
+            
 						type="submit"
 						className="btn btn-primary btn-fluid"
 						disabled={!validForm}
 					>
 						Update Deets
-					</Link>
+					</button>
+          </div>
 			</form>
 		</>
 	)

@@ -33,5 +33,5 @@ const LocationDetails = (props) => {
     </>
    );
 }
- 
+
 export default LocationDetails;

@@ -35,11 +35,14 @@ import EditLocation from './pages/EditLocation/EditLocation'
   }, [locations])
 
   const handleUpdateLocation= updatedLocationData => {
-    const newLocationsArray = locations.map(location => 
-      location._id === updatedLocationData._id ? updatedLocationData : location
-    )
-    setLocations(newLocationsArray)
-		navigate('/')
+    locationService.update(updatedLocationData)
+    .then(updatedLocation => {
+      const newLocationsArray = locations.map(location => 
+        location._id === updatedLocation._id ? updatedLocation : location
+      )
+      setLocations(newLocationsArray)
+		  navigate('/')
+    })
   }
   
 
