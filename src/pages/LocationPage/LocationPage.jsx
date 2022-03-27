@@ -18,7 +18,7 @@ const LocationDetails = (props) => {
             <p>{locationDetails.name}</p>
             <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
             <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
-            <p>Rating: {locationDetails.rating ? locationDetails.description : 'no ratings availble yet'}</p>
+            <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p>
             <Link to='/locations'>Back to All Locations</Link>
           </div>
     </>
