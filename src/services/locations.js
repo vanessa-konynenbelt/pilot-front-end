@@ -22,8 +22,19 @@ function getLocation(name) {
   .then(res => res.json)
 }
 
+function update(location) {
+  return fetch(`${BASE_URL}/${location._id}`, {
+    method: 'PUT',
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`, 
+    'content-type': 'application/json'},
+    body: JSON.stringify(location)
+  })
+  .then(res => res.json())
+}
+
 export {
   create,
   getAll,
   getLocation,
+  update,
 }

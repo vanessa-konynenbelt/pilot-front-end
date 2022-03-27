@@ -12,6 +12,7 @@ import './App.css'
 import AddLocation from './pages/AddLocation/AddLocation'
 import LocationList from "./pages/LocationList/LocationList"
 import * as locationService from './services/locations'
+import EditLocation from './pages/EditLocation/EditLocation'
 
 
 
@@ -32,6 +33,18 @@ import * as locationService from './services/locations'
   useEffect(() => {
     console.log(locations)
   }, [locations])
+
+  const handleUpdateLocation= updatedLocationData => {
+    locationService.update(updatedLocationData)
+    .then(updatedLocation => {
+      const newLocationsArray = locations.map(location => 
+        location._id === updatedLocation._id ? updatedLocation : location
+      )
+      setLocations(newLocationsArray)
+		  navigate('/')
+    })
+  }
+  
 
   const handleLogout = () => {
     authService.logout()
@@ -80,6 +93,10 @@ import * as locationService from './services/locations'
           <Route
           path="/location-page"
           element={<LocationDetails locations={locations} />}/>
+        <Route 
+          path='/edit' 
+          element= {<EditLocation handleUpdateLocation={handleUpdateLocation} />}/>
+          
         
       </Routes>
     </>
