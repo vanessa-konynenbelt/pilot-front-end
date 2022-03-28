@@ -11,15 +11,15 @@ function create(location) {
   .then(res => res.json())
 }
 
-// function createComment(comment) {
-//   return fetch(BASE_URL, {
-//     method: 'POST',
-//     headers: {'Authorization': `Bearer ${tokenService.getToken()}`, 
-//     'content-type': 'application/json'},
-//     body: JSON.stringify(comment)
-//   })
-//   .then(res => res.json())
-// }
+function createComment(location, comment) {
+  return fetch(`${BASE_URL}/${location}/comments`, {
+    method: 'POST',
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`, 
+    'content-type': 'application/json'},
+    body: JSON.stringify(comment)
+  })
+  .then(res => res.json())
+}
 
 function getAll() {
   return fetch(BASE_URL)
@@ -47,5 +47,5 @@ export {
   getAll,
   getLocation,
   update,
-  // createComment,
+  createComment,
 }
