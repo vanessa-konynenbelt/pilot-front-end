@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-import NavBar from './components/NavBar/NavBar'
+//import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
@@ -11,7 +11,7 @@ import './App.css'
 import AddLocation from './pages/AddLocation/AddLocation'
 import LocationList from "./pages/LocationList/LocationList"
 import * as locationService from './services/locations'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
@@ -47,10 +47,9 @@ import * as locationService from './services/locations'
   }, [])
 
 
-
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      {/* <NavBar user={user} handleLogout={handleLogout} /> */}
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
