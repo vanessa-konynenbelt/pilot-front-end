@@ -38,7 +38,9 @@ import EditLocation from './pages/EditLocation/EditLocation'
       location._id === updatedLocation._id ? updatedLocation : location
     )
     setLocations(newLocationsArray)
-    navigate('/location-page')
+    const location = await locationService.show(updatedLocation._id)
+    console.log(location)
+    return location
   }
 
   const handleUpdateLocation= updatedLocationData => {
