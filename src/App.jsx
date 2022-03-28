@@ -12,6 +12,7 @@ import './App.css'
 import AddLocation from './pages/AddLocation/AddLocation'
 import LocationList from "./pages/LocationList/LocationList"
 import * as locationService from './services/locations'
+import * as profileService from './services/profileService'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditLocation from './pages/EditLocation/EditLocation'
 
@@ -44,7 +45,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
   }
 
   const handleDeleteComment = comment => {
-    locationService.deleteOne(comment)
+    profileService.deleteOne(comment)
     .then(deletedComment => setComments(comments.filter(comment => comment._id !== deletedComment._id)))
   }
 
