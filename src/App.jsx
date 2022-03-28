@@ -43,8 +43,8 @@ import EditLocation from './pages/EditLocation/EditLocation'
     return location
   }
 
-  const handleDeleteComment = id => {
-    locationService.deleteOne(id)
+  const handleDeleteComment = comment => {
+    locationService.deleteOne(comment)
     .then(deletedComment => setComments(comments.filter(comment => comment._id !== deletedComment._id)))
   }
 

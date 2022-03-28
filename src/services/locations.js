@@ -51,8 +51,8 @@ function show(location, comment) {
   .then(res => res.json())
 }
 
-function deleteOne(id) {
-  return fetch(`${BASE_URL}/${id}`, {
+function deleteOne(location, _id) {
+  return fetch(`${BASE_URL}/${location}/comments/${_id}`, {
     method: 'DELETE',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`
