@@ -22,6 +22,9 @@ const LocationDetails = (props) => {
   const handleSubmit = evt => {
     evt.preventDefault()
     props.handleAddComment(locationDetails._id, commentData)
+    const updatedLocationDetails=locationDetails
+    updatedLocationDetails.comments.push(commentData)
+    setLocationDetails(updatedLocationDetails)
   }
 
   return ( 

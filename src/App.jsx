@@ -31,13 +31,14 @@ import EditLocation from './pages/EditLocation/EditLocation'
     navigate('/locations')
   }
 
-  const handleAddComment = async (location, newCommentData) => {
+  const handleAddComment = async (locationId, newCommentData) => {
     console.log('NEW COMMENT', newCommentData)
-    const newComment = await locationService.createComment(location, newCommentData)
-    console.log('HIIIIIIIIIII', newComment)
-    setComments([...comments, newComment])
-    console.log(newComment)
-    navigate('/locations')
+    const updatedLocation = await locationService.createComment(locationId, newCommentData)
+    const newLocationsArray = locations.map(location => 
+      location._id === updatedLocation._id ? updatedLocation : location
+    )
+    setLocations(newLocationsArray)
+    navigate('/location-page')
   }
 
   const handleUpdateLocation= updatedLocationData => {
