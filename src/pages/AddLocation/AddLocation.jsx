@@ -11,7 +11,6 @@ function AddLocation(props) {
 		description: '',
 		entryPoints: '',
 		rating: '',
-		// comments: '',
 		pictures: '',
 	})
 

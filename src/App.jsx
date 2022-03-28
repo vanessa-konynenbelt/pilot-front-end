@@ -30,18 +30,14 @@ import EditLocation from './pages/EditLocation/EditLocation'
     navigate('/locations')
   }
 
-  const handleAddComment = async newCommentData => {
+  const handleAddComment = async (location, newCommentData) => {
     console.log('NEW COMMENT', newCommentData)
-    const newComment = await locationService.create(newCommentData)
+    const newComment = await locationService.createComment(location, newCommentData)
     console.log('HIIIIIIIIIII', newComment)
     setComments([...comments, newComment])
     console.log(newComment)
-    navigate('/location-page')
+    navigate('/locations')
   }
-
-  useEffect(() => {
-    console.log(locations)
-  }, [locations])
 
   const handleUpdateLocation= updatedLocationData => {
     locationService.update(updatedLocationData)
