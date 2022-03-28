@@ -20,7 +20,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
     const [user, setUser] = useState(authService.getUser())
     const navigate = useNavigate()
     const [locations, setLocations] = useState(null)
-
+    const [comments, setComments] = useState(null)
 
   const handleAddLocation = async newLocationData => {
     console.log('NEW LOCATION', newLocationData)
@@ -28,6 +28,15 @@ import EditLocation from './pages/EditLocation/EditLocation'
     console.log('HIIIIIIIIIII', newLocation)
     setLocations([...locations, newLocation])
     navigate('/locations')
+  }
+
+  const handleAddComment = async newCommentData => {
+    console.log('NEW COMMENT', newCommentData)
+    const newComment = await locationService.create(newCommentData)
+    console.log('HIIIIIIIIIII', newComment)
+    setComments([...comments, newComment])
+    console.log(newComment)
+    navigate('/location-page')
   }
 
   useEffect(() => {
@@ -45,7 +54,6 @@ import EditLocation from './pages/EditLocation/EditLocation'
     })
   }
   
-
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -61,6 +69,12 @@ import EditLocation from './pages/EditLocation/EditLocation'
     .then(allLocations => setLocations(allLocations))
   }, [])
 
+
+  useEffect(() => {
+    locationService.getAll()
+    .then(allComments => setComments(allComments)
+    )
+  }, [])
 
 
   return (
@@ -92,7 +106,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
           element= {<LocationList locations={locations} />}/>
           <Route
           path="/location-page"
-          element={<LocationDetails locations={locations} />}/>
+          element={<LocationDetails locations={locations} handleAddComment={handleAddComment} />}/>
         <Route 
           path='/edit' 
           element= {<EditLocation handleUpdateLocation={handleUpdateLocation} />}/>
