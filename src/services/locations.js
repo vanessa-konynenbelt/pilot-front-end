@@ -51,6 +51,16 @@ function show(location, comment) {
   .then(res => res.json())
 }
 
+function deleteOne(location, _id) {
+  return fetch(`${BASE_URL}/${location}/comments/${_id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+  })
+  .then(res => res.json())
+}
+
 export {
   create,
   getAll,
@@ -58,4 +68,5 @@ export {
   update,
   createComment,
   show,
+  deleteOne
 }

@@ -43,6 +43,11 @@ import EditLocation from './pages/EditLocation/EditLocation'
     return location
   }
 
+  const handleDeleteComment = comment => {
+    locationService.deleteOne(comment)
+    .then(deletedComment => setComments(comments.filter(comment => comment._id !== deletedComment._id)))
+  }
+
   const handleUpdateLocation= updatedLocationData => {
     locationService.update(updatedLocationData)
     .then(updatedLocation => {
@@ -106,7 +111,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
           element= {<LocationList locations={locations} />}/>
           <Route
           path="/location-page"
-          element={<LocationDetails locations={locations} handleAddComment={handleAddComment} />}/>
+          element={<LocationDetails user={user} locations={locations} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} />}/>
         <Route 
           path='/edit' 
           element= {<EditLocation handleUpdateLocation={handleUpdateLocation} />}/>
