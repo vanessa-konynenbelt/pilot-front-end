@@ -1,21 +1,19 @@
-import { getAll } from "../../services/locations";
+import { getAll, getLocation } from "../../services/locations";
 import { useEffect, useState, } from "react";
 import { useLocation, Link } from "react-router-dom";
+
 
 const LocationDetails = (props) => {
   const [locationDetails, setLocationDetails] = useState({})
   let location = useLocation()
+  const [commentData, setCommentData] = useState({
+    comments: '',
+  })
   
   useEffect(() => {
     getAll(location.state.location.name)
     setLocationDetails(location.state.location)
   }, [])
-
-
-
-  const [commentData, setCommentData] = useState({
-		comments: '',
-	})
 
   const handleChange = evt => {
   setCommentData({ ...commentData, [evt.target.name]: evt.target.value })
@@ -23,8 +21,10 @@ const LocationDetails = (props) => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    const commentFormData = new FormData()
-    commentFormData.append('comment', commentData.comments)
+    getLocation(commentData.comments)
+    .then(commentData => {
+      setCommentData(commentData)
+    }, [])
     props.handleAddComment(commentData)
   }
 
@@ -58,6 +58,8 @@ const LocationDetails = (props) => {
 						className="form-control"
 						id="comment-input"
 						name="comments"
+            value={commentData
+            .comments}
             onChange={handleChange}
 					/>
 				</div>
@@ -78,12 +80,10 @@ const LocationDetails = (props) => {
         </tr>
     </thead>
     <tbody>
-      { commentData.comments.forEach(function(comment) {
         <tr>
-          <td>{comment}</td>
-          <td>{comment}</td>
+          <td>{commentData.comments}</td>
+          <td>{commentData.comments.owner}</td>
         </tr> 
-      })}
     </tbody>
     </table>
     :

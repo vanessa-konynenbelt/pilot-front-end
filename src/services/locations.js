@@ -11,13 +11,23 @@ function create(location) {
   .then(res => res.json())
 }
 
+// function createComment(comment) {
+//   return fetch(BASE_URL, {
+//     method: 'POST',
+//     headers: {'Authorization': `Bearer ${tokenService.getToken()}`, 
+//     'content-type': 'application/json'},
+//     body: JSON.stringify(comment)
+//   })
+//   .then(res => res.json())
+// }
+
 function getAll() {
   return fetch(BASE_URL)
   .then(res => res.json())
 }
 
 function getLocation(name) {
-   new Map('#MyMap')
+  //  new Map('MyMap')
   return fetch (`/api/locations/${name}`)
   .then(res => res.json)
 }
@@ -37,4 +47,5 @@ export {
   getAll,
   getLocation,
   update,
+  // createComment,
 }
