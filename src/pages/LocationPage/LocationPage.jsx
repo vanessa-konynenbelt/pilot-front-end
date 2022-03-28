@@ -19,9 +19,10 @@ const LocationDetails = (props) => {
   setCommentData({ ...commentData, [evt.target.name]: evt.target.value })
   }
 
-  const handleSubmit = evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault()
-    props.handleAddComment(locationDetails._id, commentData)
+    const updatedLocation= await props.handleAddComment(locationDetails._id, commentData)
+    setLocationDetails(updatedLocation)
   }
 
   return ( 
@@ -76,14 +77,14 @@ const LocationDetails = (props) => {
         </tr>
     </thead>
     <tbody>
-        <tr>
+      
           {locationDetails.comments.map((comment) => (
-            <>
-          <td>{comment.content}</td>
-          <td>{comment.owner}</td>
-          </>
+          <tr key={comment._id}>
+            <td>{comment.content}</td>
+            <td>{comment.owner.name}</td>
+          </tr> 
           ))}
-        </tr> 
+        
     </tbody>
     </table>
     :

@@ -42,10 +42,20 @@ function update(location) {
   .then(res => res.json())
 }
 
+function show(location, comment) {
+  return fetch(`${BASE_URL}/${location}/comments`, {
+    method: 'GET',
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`, 
+    'content-type': 'application/json'},
+  })
+  .then(res => res.json())
+}
+
 export {
   create,
   getAll,
   getLocation,
   update,
   createComment,
+  show,
 }
