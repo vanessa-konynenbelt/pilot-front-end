@@ -5,6 +5,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import LocationDetails from './pages/LocationPage/LocationPage'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import './App.css'
@@ -12,25 +13,44 @@ import AddLocation from './pages/AddLocation/AddLocation'
 import LocationList from "./pages/LocationList/LocationList"
 import * as locationService from './services/locations'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import EditLocation from './pages/EditLocation/EditLocation'
+
+
 
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
     const navigate = useNavigate()
     const [locations, setLocations] = useState(null)
-
+    const [comments, setComments] = useState(null)
 
   const handleAddLocation = async newLocationData => {
     console.log('NEW LOCATION', newLocationData)
     const newLocation = await locationService.create(newLocationData)
     console.log('HIIIIIIIIIII', newLocation)
     setLocations([...locations, newLocation])
-    navigate('/')
+    navigate('/locations')
   }
 
-  useEffect(() => {
-    console.log(locations)
-  }, [locations])
+  const handleAddComment = async (location, newCommentData) => {
+    console.log('NEW COMMENT', newCommentData)
+    const newComment = await locationService.createComment(location, newCommentData)
+    console.log('HIIIIIIIIIII', newComment)
+    setComments([...comments, newComment])
+    console.log(newComment)
+    navigate('/locations')
+  }
 
+  const handleUpdateLocation= updatedLocationData => {
+    locationService.update(updatedLocationData)
+    .then(updatedLocation => {
+      const newLocationsArray = locations.map(location => 
+        location._id === updatedLocation._id ? updatedLocation : location
+      )
+      setLocations(newLocationsArray)
+		  navigate('/')
+    })
+  }
+  
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -44,6 +64,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
   useEffect(() => {
     locationService.getAll()
     .then(allLocations => setLocations(allLocations))
+  }, [])
+
+
+  useEffect(() => {
+    locationService.getAll()
+    .then(allComments => setComments(allComments)
+    )
   }, [])
 
 
@@ -74,6 +101,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
         <Route 
           path='/locations'
           element= {<LocationList locations={locations} />}/>
+          <Route
+          path="/location-page"
+          element={<LocationDetails locations={locations} handleAddComment={handleAddComment} />}/>
+        <Route 
+          path='/edit' 
+          element= {<EditLocation handleUpdateLocation={handleUpdateLocation} />}/>
+          
+        
       </Routes>
     </>
   )

@@ -1,41 +1,37 @@
-
 import { useState, useRef, useEffect } from "react"
-import { getLocation } from '../../services/locations'
+import { Link, useLocation } from 'react-router-dom'
 
-function AddLocation(props) {
+function EditLocation(props) {
+  const location = useLocation()
+	const [formData, setFormData] = useState(location.state.location)
+  const [validForm, setValidForm] = useState(true)
   const formElement = useRef()
-	const [locationData, setLocationData] = useState([])
-  const [validForm, setValidForm] = useState(false)
-  const [formData, setFormData] = useState({
-		name: '',
-		description: '',
-		entryPoints: '',
-		rating: '',
-		pictures: '',
-	})
-
-  useEffect(()=> {
-    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
-  }, [formData])
+  
 
 
   const handleChange = evt => {
-  setFormData({ ...formData, [evt.target.name]: evt.target.value })
+    setFormData({...formData, [evt.target.name]: evt.target.value })
   }
+
+  useEffect(() => {
+		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+	}, [formData])
 
   const handleSubmit = evt => {
-    evt.preventDefault()
-		getLocation(formData.name)
-		.then(locationData => {
-			setLocationData(locationData)
-		}, [])
-    props.handleAddLocation(formData)
-		
-  }
+		evt.preventDefault()
+		const locationFormData = new FormData()
+    locationFormData.append('name', formData.name)
+		locationFormData.append('description', formData.description)
+		locationFormData.append('entryPoints', formData.entryPoints)
+		locationFormData.append('rating', formData.rating)
+    locationFormData.append('_id', formData._id) 
+		props.handleUpdateLocation(locationFormData)
+	}
 
-	return (
+
+  return (
 		<>
-			<h1>Add Location</h1>
+			<h1>Edit Location</h1>
 			<form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
 					<label htmlFor="name-input" className="form-label">
@@ -86,37 +82,25 @@ function AddLocation(props) {
 						className="form-control"
 						id="rating-input"
 						name="rating"
-						required
             value={formData.rating}
             onChange={handleChange}
 					/>
 
 				</div>
-				<div className="form-group mb-3">
-					<label htmlFor="pictures-input" className="form-label">
-						Pictures
-					</label>
-					<input 
-						type="text"
-						className="form-control"
-						id="name-input"
-						name="pictures"
-            value={formData.pictures}
-            onChange={handleChange}
-					/>
-				</div><br />
+				<br />
+        <div className="update-btn">
         <button
+            
 						type="submit"
 						className="btn btn-primary btn-fluid"
 						disabled={!validForm}
 					>
-						Add Swim Location
+						Update Deets
 					</button>
+          </div>
 			</form>
 		</>
 	)
-
-
 }
 
-export default AddLocation
+export default EditLocation
