@@ -15,8 +15,6 @@ import * as locationService from './services/locations'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditLocation from './pages/EditLocation/EditLocation'
 
-
-
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
     const navigate = useNavigate()
@@ -24,15 +22,15 @@ import EditLocation from './pages/EditLocation/EditLocation'
     const [comments, setComments] = useState(null)
 
   const handleAddLocation = async newLocationData => {
-    console.log('NEW LOCATION', newLocationData)
+    console.log('new location data', newLocationData)
     const newLocation = await locationService.create(newLocationData)
-    console.log('HIIIIIIIIIII', newLocation)
+    console.log('new location', newLocation)
     setLocations([...locations, newLocation])
     navigate('/locations')
   }
 
   const handleAddComment = async (locationId, newCommentData) => {
-    console.log('NEW COMMENT', newCommentData)
+    console.log('new comment', newCommentData)
     const updatedLocation = await locationService.createComment(locationId, newCommentData)
     const newLocationsArray = locations.map(location => 
       location._id === updatedLocation._id ? updatedLocation : location
@@ -44,7 +42,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
   }
 
   const handleDeleteComment = id => {
-    console.log("CHECK THIS OUT", id)
+    console.log("id to be deleted", id)
     locationService.deleteOne(id)
     // .then(deletedComment => setLocations
     //   (locations.filter(location => 
@@ -52,14 +50,13 @@ import EditLocation from './pages/EditLocation/EditLocation'
   }
   
 
-  const handleUpdateLocation= updatedLocationData => {
-    locationService.update(updatedLocationData)
+  const handleUpdateLocation= (formData) => {
+    locationService.update(formData)
     .then(updatedLocation => {
       const newLocationsArray = locations.map(location => 
-        location._id === updatedLocation._id ? updatedLocation : location
-      )
+        location._id === updatedLocation._id ? updatedLocation : location)
       setLocations(newLocationsArray)
-		  navigate('/')
+		  navigate('/locations')
     })
   }
   
@@ -91,11 +88,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
       <Routes>
         <Route 
           path="/" 
-          element={<Landing user={user}/>} 
-        />
-        <Route 
-          path="/" 
-          element={<Landing handleLogout={handleLogout}/>}
+          element={<Landing user={user} handleLogout={handleLogout} />} 
         />
         <Route
           path="/signup"
@@ -124,7 +117,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
           element={<LocationDetails user={user} locations={locations} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} />}/>
         <Route 
           path='/edit' 
-          element= {<EditLocation handleUpdateLocation={handleUpdateLocation} />}/>
+          element= {<EditLocation user={user} locations={locations} handleUpdateLocation={handleUpdateLocation} />}/>
           
         
       </Routes>
