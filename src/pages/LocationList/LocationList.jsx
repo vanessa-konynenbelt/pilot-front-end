@@ -6,22 +6,22 @@ function LocationList(props) {
   
   return (
     <>
-      <h1>Locations!!</h1>
-      <div>
-        {props.locations?.map(location => (
-          <Link
-          to="/location-page"
-          state={{location}}
-          style={{textDecoration: "none"}}
-          >
-          <div key={location._id}>
-            <p>Location Name: {location.name}</p>
-            <p>Description: {location.description}</p>
-            <div id="myMap" ></div>
-          </div>
-          </Link>
-        ))}
-      </div>
+      <h1>Locations</h1>
+        <div>
+          {props.locations?.map(location => (
+            <>
+              <Link
+                key={location._id}
+                to="/location-page"
+                state={{location}}
+                style={{textDecoration: "none"}}
+              >
+                <h3>{location.name}</h3>
+              </Link>
+              <p>{location.description}</p>
+            </>
+          ))}
+        </div>
     </>
   )
 }

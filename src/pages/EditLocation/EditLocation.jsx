@@ -3,7 +3,8 @@ import { Link, useLocation } from 'react-router-dom'
 
 function EditLocation(props) {
   const location = useLocation()
-	const [formData, setFormData] = useState(location.state.location) //passing in state location
+	const [formData, setFormData] = useState(location.state.location.state.location) 
+	console.log('formData is', location.state.location.state.location)
   const [validForm, setValidForm] = useState(true)
   const formElement = useRef()
   
@@ -19,11 +20,12 @@ function EditLocation(props) {
   const handleSubmit = evt => {
 		evt.preventDefault()
 		const locationFormData = new FormData()
-    locationFormData.append('name', formData.name)
-		locationFormData.append('description', formData.description)
-		locationFormData.append('entryPoints', formData.entryPoints)
-		locationFormData.append('rating', formData.rating)
-    locationFormData.append('_id', formData._id) 
+		console.log(locationFormData)
+    // locationFormData.append('name', formData.name)
+		// locationFormData.append('description', formData.description)
+		// locationFormData.append('entryPoints', formData.entryPoints)
+		// locationFormData.append('rating', formData.rating)
+    // locationFormData.append('_id', formData._id) 
 		props.handleUpdateLocation(locationFormData)
 	}
 
@@ -87,13 +89,12 @@ function EditLocation(props) {
 				</div>
 				<br />
         <div className="update-btn">
-        <button
-            
+        <button 
 						type="submit"
 						className="btn btn-primary btn-fluid"
 						disabled={!validForm}
 					>
-						Edit
+						Save
 					</button>
           </div>
 			</form>

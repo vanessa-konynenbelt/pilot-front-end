@@ -40,7 +40,7 @@ const LocationDetails = (props) => {
           to='/edit'
           state={{location}}
         >
-          Edit Deets
+          Edit 
         </Link><br />
             <Link to='/locations'>Back to All Locations</Link>
           </div>
@@ -67,7 +67,6 @@ const LocationDetails = (props) => {
 						Add Comment
 					</button><br></br>
           </form>
-          <Link to='/locations'>Back to All Locations</Link>
       {locationDetails?.comments?.length > 0 ?
           <table>
       <thead>
