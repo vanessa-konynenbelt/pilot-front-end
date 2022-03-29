@@ -112,7 +112,6 @@ function AddLocation(props) {
 						className="form-control"
 						id="photo-upload"
 						name="pictures"
-            value={formData.pictures}
             onChange={handleChangePhoto}
 					/>
 				</div><br />
