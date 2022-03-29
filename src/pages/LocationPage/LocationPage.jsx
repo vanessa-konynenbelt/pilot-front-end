@@ -29,6 +29,11 @@ const LocationDetails = (props) => {
     <>
       <h1>Location Details</h1>
           <div>
+            <img 
+            src={location.pictures}
+            alt='the view'
+            className='location-pic'
+            />
             <p>{locationDetails.name}</p>
             <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
             <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
@@ -40,7 +45,7 @@ const LocationDetails = (props) => {
           to='/edit'
           state={{location}}
         >
-          Edit Deets
+          Edit 
         </Link><br />
             <Link to='/locations'>Back to All Locations</Link>
           </div>
@@ -67,7 +72,6 @@ const LocationDetails = (props) => {
 						Add Comment
 					</button><br></br>
           </form>
-          <Link to='/locations'>Back to All Locations</Link>
       {locationDetails?.comments?.length > 0 ?
           <table>
       <thead>

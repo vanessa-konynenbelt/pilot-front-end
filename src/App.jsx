@@ -15,8 +15,6 @@ import { create, getAll, getLocation, update, createComment, show, deleteOne} fr
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditLocation from './pages/EditLocation/EditLocation'
 
-
-
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
     const navigate = useNavigate()
@@ -24,6 +22,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
     const [comments, setComments] = useState(null)
 
   const handleAddLocation = async newLocationData => {
+
     console.log('NEW LOCATION', newLocationData)
     const newLocation = await create(newLocationData)
     console.log('HIIIIIIIIIII', newLocation)
@@ -34,6 +33,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
   const handleAddComment = async (locationId, newCommentData) => {
     console.log('NEW COMMENT', newCommentData)
     const updatedLocation = await createComment(locationId, newCommentData)
+
     const newLocationsArray = locations.map(location => 
       location._id === updatedLocation._id ? updatedLocation : location
     )
@@ -42,6 +42,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
     console.log(location)
     return location
   }
+
 
   //find location by id
   //iterate through comments
@@ -74,6 +75,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
   //     (locations.comments.filter(comment => 
   //       comment._id !== comId))})
   // }
+
   
   const handleDeleteComment = (location, comId) => {
     // find location first
@@ -97,14 +99,16 @@ import EditLocation from './pages/EditLocation/EditLocation'
     //   comment._id !== comId))
     }
 
+
   const handleUpdateLocation= updatedLocationData => {
     update(updatedLocationData)
+
+
     .then(updatedLocation => {
       const newLocationsArray = locations.map(location => 
-        location._id === updatedLocation._id ? updatedLocation : location
-      )
+        location._id === updatedLocation._id ? updatedLocation : location)
       setLocations(newLocationsArray)
-		  navigate('/')
+		  navigate('/locations')
     })
   }
   
@@ -136,11 +140,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
       <Routes>
         <Route 
           path="/" 
-          element={<Landing user={user}/>} 
-        />
-        <Route 
-          path="/" 
-          element={<Landing handleLogout={handleLogout}/>}
+          element={<Landing user={user} handleLogout={handleLogout} />} 
         />
         <Route
           path="/signup"
@@ -169,7 +169,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
           element={<LocationDetails user={user} locations={locations} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} />}/>
         <Route 
           path='/edit' 
-          element= {<EditLocation handleUpdateLocation={handleUpdateLocation} />}/>
+          element= {<EditLocation user={user} locations={locations} handleUpdateLocation={handleUpdateLocation} />}/>
           
         
       </Routes>

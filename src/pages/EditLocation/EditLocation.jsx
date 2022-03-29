@@ -3,12 +3,10 @@ import { Link, useLocation } from 'react-router-dom'
 
 function EditLocation(props) {
   const location = useLocation()
-	const [formData, setFormData] = useState(location.state.location)
+	const [formData, setFormData] = useState(location.state.location.state.location) 
   const [validForm, setValidForm] = useState(true)
   const formElement = useRef()
   
-
-
   const handleChange = evt => {
     setFormData({...formData, [evt.target.name]: evt.target.value })
   }
@@ -19,15 +17,17 @@ function EditLocation(props) {
 
   const handleSubmit = evt => {
 		evt.preventDefault()
-		const locationFormData = new FormData()
-    locationFormData.append('name', formData.name)
-		locationFormData.append('description', formData.description)
-		locationFormData.append('entryPoints', formData.entryPoints)
-		locationFormData.append('rating', formData.rating)
-    locationFormData.append('_id', formData._id) 
-		props.handleUpdateLocation(locationFormData)
+		console.log('formdata in handlesubmit (edit location)', formData)
+		// const locationFormData = new FormData()
+	  // console.log('location formdata', locationFormData)
+    // locationFormData.append('name', formData.name)
+		// locationFormData.append('description', formData.description)
+		// locationFormData.append('entryPoints', formData.entryPoints)
+		// locationFormData.append('rating', formData.rating)
+    // locationFormData.append('_id', formData._id) 
+		// props.handleUpdateLocation(locationFormData)
+		props.handleUpdateLocation(formData)
 	}
-
 
   return (
 		<>
@@ -85,17 +85,15 @@ function EditLocation(props) {
             value={formData.rating}
             onChange={handleChange}
 					/>
-
 				</div>
 				<br />
         <div className="update-btn">
-        <button
-            
+        <button 
 						type="submit"
 						className="btn btn-primary btn-fluid"
 						disabled={!validForm}
 					>
-						Update Deets
+						Save
 					</button>
           </div>
 			</form>
