@@ -89,9 +89,8 @@ const LocationDetails = (props) => {
             {props.user.profile === comment.owner?._id ?
               <td><button
                 className="btn btn-sm btn-danger m-left"
-                onClick={()=> { 
-                  console.log('This is what location details is', locationDetails)
-                  props.handleDeleteComment(locationDetails, comment._id) }}
+                onClick={()=>
+                  props.handleDeleteComment(locationDetails, comment._id)}
                 user={props.user}
               >
                 X
