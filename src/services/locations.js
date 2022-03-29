@@ -33,6 +33,7 @@ function getLocation(name) {
 }
 
 function update(location) {
+  console.log('this is the url in location services update', BASE_URL, location._id)
   return fetch(`${BASE_URL}/${location._id}`, {
     method: 'PUT',
     headers: {'Authorization': `Bearer ${tokenService.getToken()}`, 

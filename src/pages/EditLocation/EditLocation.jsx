@@ -17,7 +17,7 @@ function EditLocation(props) {
 
   const handleSubmit = evt => {
 		evt.preventDefault()
-		console.log('formdata', formData)
+		console.log('formdata in handlesubmit (edit location)', formData)
 		// const locationFormData = new FormData()
 	  // console.log('location formdata', locationFormData)
     // locationFormData.append('name', formData.name)

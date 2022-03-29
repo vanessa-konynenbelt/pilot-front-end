@@ -9,9 +9,9 @@ function LocationList(props) {
       <h1>Locations</h1>
         <div>
           {props.locations?.map(location => (
-            <>
+        
+            <div key={location._id}>
               <Link
-                key={location._id}
                 to="/location-page"
                 state={{location}}
                 style={{textDecoration: "none"}}
@@ -19,7 +19,8 @@ function LocationList(props) {
                 <h4>{location.name}</h4>
               </Link>
               <p>{location.description}</p>
-            </>
+            </div>
+           
           ))}
         </div>
     </>

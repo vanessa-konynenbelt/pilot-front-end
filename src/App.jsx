@@ -50,8 +50,8 @@ import EditLocation from './pages/EditLocation/EditLocation'
   }
   
 
-  const handleUpdateLocation= (updatedLocationData) => {
-    locationService.update(updatedLocationData)
+  const handleUpdateLocation= (formData) => {
+    locationService.update(formData)
     .then(updatedLocation => {
       const newLocationsArray = locations.map(location => 
         location._id === updatedLocation._id ? updatedLocation : location)
