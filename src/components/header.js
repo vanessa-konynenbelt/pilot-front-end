@@ -9,17 +9,17 @@ const Header = ({ user, handleLogout }) => {
           {user ?
              <ul className="navbar-nav ms-auto">
               <a className="navbar-brand" href="#page-top">Welcome, {user.name}!</a>
-              <li><Link to="/profiles">Profiles</Link></li>
-              <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-              <li><Link to="/changePassword">Change Password</Link></li>
-              <li><Link to="/add-location">Add Location</Link></li>
-              <li><Link to="/locations">All Locations</Link></li>
+              <li className="nav-item nav-link"><Link to="/profiles">Profiles</Link></li>
+              <li className="nav-item nav-link"><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
+              <li className="nav-item nav-link"><Link to="/changePassword">Change Password</Link></li>
+              <li className="nav-item nav-link"><Link to="/add-location">Add Location</Link></li>
+              <li className="nav-item nav-link"><Link to="/locations">All Locations</Link></li>
             </ul>
           :
           <ul className="navbar-nav ms-auto">
-                <a className="navbar-brand" href="#page-top">Welcome</a>
-                <li className="nav-item nav-link"><Link to="/login">Log In</Link></li>
-                <li className="nav-item nav-link"><Link to="/signup">Sign Up</Link></li>
+                <li className="nav-item welcome">Welcome</li>
+                <li className="nav-item"><a className="nav-link" href="/login">Log In</a></li>
+                <li className="nav-item"><a className="nav-link"href="/signup">Sign Up</a></li>
             </ul>
         }
             <button className="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i className="fas fa-bars"></i>
