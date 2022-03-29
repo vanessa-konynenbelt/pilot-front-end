@@ -9,4 +9,8 @@ async function getAllProfiles() {
   return await res.json()
 }
 
-export { getAllProfiles }
+
+export { 
+  getAllProfiles,
+
+}
