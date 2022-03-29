@@ -6,21 +6,19 @@ function LocationList(props) {
   
   return (
     <>
+    {locations.length?}
       <h1>Locations</h1>
         <div>
           {props.locations?.map(location => (
-        
             <div key={location._id}>
               <Link
                 to="/location-page"
                 state={{location}}
                 style={{textDecoration: "none"}}
               >
-                <h4>{location.name}</h4>
+                <h5 className="card-title">Card title: {location.name}</h5> 
               </Link>
-              <p>{location.description}</p>
             </div>
-           
           ))}
         </div>
     </>
