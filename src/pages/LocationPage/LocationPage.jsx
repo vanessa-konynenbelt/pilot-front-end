@@ -83,16 +83,16 @@ const LocationDetails = (props) => {
             <td>{comment.content}</td>
             <td>{comment.owner.name}</td>
             {props.user.profile === comment.owner?._id ?
-              <button
+              <td><button
                 className="btn btn-sm btn-danger m-left"
                 onClick={()=> props.handleDeleteComment(comment._id)}
                 user={props.user}
               >
                 X
-              </button>
+              </button></td>
                 
                   :
-              <div></div>
+              <td></td>
             }
           </tr> 
           ))}
