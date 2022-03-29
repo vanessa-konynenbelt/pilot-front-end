@@ -91,11 +91,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
       <Routes>
         <Route 
           path="/" 
-          element={<Landing user={user}/>} 
-        />
-        <Route 
-          path="/" 
-          element={<Landing handleLogout={handleLogout}/>}
+          element={<Landing user={user} handleLogout={handleLogout} />} 
         />
         <Route
           path="/signup"

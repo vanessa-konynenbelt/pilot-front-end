@@ -3,11 +3,10 @@ import { Link, useLocation } from 'react-router-dom'
 
 function EditLocation(props) {
   const location = useLocation()
-	const [formData, setFormData] = useState(location.state.location)
+	const [formData, setFormData] = useState(location.state.location) //passing in state location
   const [validForm, setValidForm] = useState(true)
   const formElement = useRef()
   
-
 
   const handleChange = evt => {
     setFormData({...formData, [evt.target.name]: evt.target.value })
@@ -85,7 +84,6 @@ function EditLocation(props) {
             value={formData.rating}
             onChange={handleChange}
 					/>
-
 				</div>
 				<br />
         <div className="update-btn">
@@ -95,7 +93,7 @@ function EditLocation(props) {
 						className="btn btn-primary btn-fluid"
 						disabled={!validForm}
 					>
-						Update Deets
+						Edit
 					</button>
           </div>
 			</form>
