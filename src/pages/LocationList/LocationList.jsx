@@ -16,7 +16,7 @@ function LocationList(props) {
                 state={{location}}
                 style={{textDecoration: "none"}}
               >
-                <h3>{location.name}</h3>
+                <h4>{location.name}</h4>
               </Link>
               <p>{location.description}</p>
             </>

@@ -4,11 +4,9 @@ import { Link, useLocation } from 'react-router-dom'
 function EditLocation(props) {
   const location = useLocation()
 	const [formData, setFormData] = useState(location.state.location.state.location) 
-	console.log('formData is', location.state.location.state.location)
   const [validForm, setValidForm] = useState(true)
   const formElement = useRef()
   
-
   const handleChange = evt => {
     setFormData({...formData, [evt.target.name]: evt.target.value })
   }
@@ -19,16 +17,17 @@ function EditLocation(props) {
 
   const handleSubmit = evt => {
 		evt.preventDefault()
-		const locationFormData = new FormData()
-		console.log(locationFormData)
+		console.log('formdata', formData)
+		// const locationFormData = new FormData()
+	  // console.log('location formdata', locationFormData)
     // locationFormData.append('name', formData.name)
 		// locationFormData.append('description', formData.description)
 		// locationFormData.append('entryPoints', formData.entryPoints)
 		// locationFormData.append('rating', formData.rating)
     // locationFormData.append('_id', formData._id) 
-		props.handleUpdateLocation(locationFormData)
+		// props.handleUpdateLocation(locationFormData)
+		props.handleUpdateLocation(formData)
 	}
-
 
   return (
 		<>

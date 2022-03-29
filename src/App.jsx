@@ -22,15 +22,15 @@ import EditLocation from './pages/EditLocation/EditLocation'
     const [comments, setComments] = useState(null)
 
   const handleAddLocation = async newLocationData => {
-    console.log('NEW LOCATION', newLocationData)
+    console.log('new location data', newLocationData)
     const newLocation = await locationService.create(newLocationData)
-    console.log('HIIIIIIIIIII', newLocation)
+    console.log('new location', newLocation)
     setLocations([...locations, newLocation])
     navigate('/locations')
   }
 
   const handleAddComment = async (locationId, newCommentData) => {
-    console.log('NEW COMMENT', newCommentData)
+    console.log('new comment', newCommentData)
     const updatedLocation = await locationService.createComment(locationId, newCommentData)
     const newLocationsArray = locations.map(location => 
       location._id === updatedLocation._id ? updatedLocation : location
@@ -42,7 +42,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
   }
 
   const handleDeleteComment = id => {
-    console.log("CHECK THIS OUT", id)
+    console.log("id to be deleted", id)
     locationService.deleteOne(id)
     // .then(deletedComment => setLocations
     //   (locations.filter(location => 
@@ -54,8 +54,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
     locationService.update(updatedLocationData)
     .then(updatedLocation => {
       const newLocationsArray = locations.map(location => 
-        location._id === updatedLocation._id ? updatedLocation : location
-      )
+        location._id === updatedLocation._id ? updatedLocation : location)
       setLocations(newLocationsArray)
 		  navigate('/locations')
     })
