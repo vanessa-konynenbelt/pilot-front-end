@@ -28,8 +28,8 @@ function getAll() {
 
 function getLocation(name) {
   //  new Map('MyMap')
-  return fetch (`/api/locations/${name}`)
-  .then(res => res.json)
+  return fetch (`${BASE_URL}/${name}`)
+  .then(res => res.json())
 }
 
 function update(location) {
@@ -52,8 +52,10 @@ function show(location, comment) {
   .then(res => res.json())
 }
 
-function deleteOne(id) {
-  return fetch(`${BASE_URL}/${id}`, {
+function deleteOne(location, comment) {
+  console.log('THIS IS THE LOCATION', location)
+  console.log('HERE IS THE COMMENT ID', comment)
+  return fetch(`${BASE_URL}/${location}/comments/${comment}`, {
     method: 'DELETE',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`
