@@ -24,7 +24,7 @@ function AddLocation(props) {
   }
 
 	const handleChangePhoto = (evt) => {
-		setFormData({...formData, photo: evt.target.files[0]})
+		setFormData({...formData, pictures: evt.target.files[0]})
 	}
 
   const handleSubmit = evt => {
