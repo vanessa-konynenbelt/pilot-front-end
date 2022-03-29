@@ -29,6 +29,11 @@ const LocationDetails = (props) => {
     <>
       <h1>Location Details</h1>
           <div>
+            <img 
+            src={location.pictures}
+            alt='the view'
+            className='location-pic'
+            />
             <p>{locationDetails.name}</p>
             <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
             <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>

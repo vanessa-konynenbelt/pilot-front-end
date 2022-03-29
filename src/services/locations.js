@@ -4,9 +4,9 @@ const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/locations`
 function create(location) {
   return fetch(BASE_URL, {
     method: 'POST',
-    headers: {'Authorization': `Bearer ${tokenService.getToken()}`, 
-    'content-type': 'application/json'},
-    body: JSON.stringify(location)
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`
+  },
+    body: location
   })
   .then(res => res.json())
 }
