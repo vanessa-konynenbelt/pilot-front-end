@@ -11,7 +11,7 @@ import * as authService from './services/authService'
 import './App.css'
 import AddLocation from './pages/AddLocation/AddLocation'
 import LocationList from "./pages/LocationList/LocationList"
-import * as locationService from './services/locations'
+import { create, getAll, getLocation, update, createComment, show, deleteOne} from './services/locations'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditLocation from './pages/EditLocation/EditLocation'
 
@@ -20,12 +20,12 @@ import EditLocation from './pages/EditLocation/EditLocation'
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
     const navigate = useNavigate()
-    const [locations, setLocations] = useState(null)
+    const [locations, setLocations] = useState([])
     const [comments, setComments] = useState(null)
 
   const handleAddLocation = async newLocationData => {
     console.log('NEW LOCATION', newLocationData)
-    const newLocation = await locationService.create(newLocationData)
+    const newLocation = await create(newLocationData)
     console.log('HIIIIIIIIIII', newLocation)
     setLocations([...locations, newLocation])
     navigate('/locations')
@@ -33,27 +33,72 @@ import EditLocation from './pages/EditLocation/EditLocation'
 
   const handleAddComment = async (locationId, newCommentData) => {
     console.log('NEW COMMENT', newCommentData)
-    const updatedLocation = await locationService.createComment(locationId, newCommentData)
+    const updatedLocation = await createComment(locationId, newCommentData)
     const newLocationsArray = locations.map(location => 
       location._id === updatedLocation._id ? updatedLocation : location
     )
     setLocations(newLocationsArray)
-    const location = await locationService.show(updatedLocation._id)
+    const location = await show(updatedLocation._id)
     console.log(location)
     return location
   }
 
-  const handleDeleteComment = id => {
-    console.log("CHECK THIS OUT", id)
-    locationService.deleteOne(id)
-    // .then(deletedComment => setLocations
-    //   (locations.filter(location => 
-    //     location.id !== deletedComment.id)))
-  }
+  //find location by id
+  //iterate through comments
+  //.then fi
+
+  // const handleDeleteComment = id => {
+
+  //   console.log("CHECK THIS OUT", id)
+  //   deleteOne(id)
+  //   .then(deletedComment => setLocations
+  //     (locations.filter(location => 
+  //       location?._id !== id)))
+
+
+    // try {
+    //   deleteOne(comId)
+    //   console.log(comId)
+    //   setComments(comments.filter(comment => comment._id !== comId))
+    // } catch(err) {
+    //   console.log(err)
+    // }    
+
+
+   
+  //   getLocation(locId)
+  //   .then(location => location.deleteOne(comId))
+  //   .then(deletedComment => { 
+  //     console.log('LOOK', comId) 
+  //     setLocations
+  //     (locations.comments.filter(comment => 
+  //       comment._id !== comId))})
+  // }
   
+  const handleDeleteComment = (location, comId) => {
+    // find location first
+        getLocation(location)
+    // take location
+        .then(location => {
+          console.log(location)
+    // delete comment by Id
+    deleteOne(location, comId)})
+    .then(newLocation => {
+      setLocations(locations.map(locat => {
+        if(locat._id === newLocation._id) {
+          return newLocation
+        } else {
+          return locat
+        }
+      }))
+    })
+    // set the state of the locations while removing the location's comment by id using filter method
+    // setLocations(locations.comment.filter(comment => 
+    //   comment._id !== comId))
+    }
 
   const handleUpdateLocation= updatedLocationData => {
-    locationService.update(updatedLocationData)
+    update(updatedLocationData)
     .then(updatedLocation => {
       const newLocationsArray = locations.map(location => 
         location._id === updatedLocation._id ? updatedLocation : location
@@ -74,13 +119,13 @@ import EditLocation from './pages/EditLocation/EditLocation'
   }
 
   useEffect(() => {
-    locationService.getAll()
+    getAll()
     .then(allLocations => setLocations(allLocations))
   }, [])
 
 
   useEffect(() => {
-    locationService.getAll()
+    getAll()
     .then(allComments => setComments(allComments)
     )
   }, [])
