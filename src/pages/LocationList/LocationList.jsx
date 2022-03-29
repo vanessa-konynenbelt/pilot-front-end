@@ -13,7 +13,6 @@ function LocationList(props) {
           {props.locations.map((location) => (
               <Link 
                 key={location._id}
-                className='App-link'
                 to="/location-page"
                 state={{ location }}
               >
