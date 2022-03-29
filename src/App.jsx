@@ -43,12 +43,12 @@ import EditLocation from './pages/EditLocation/EditLocation'
     return location
   }
 
-  const handleDeleteComment = comment => {
-    console.log("CHECK THIS OUT", comment)
-    locationService.deleteOne(comment)
-    .then(deletedComment => setComments
-      (comments.filter(comment => 
-        comment._id !== deletedComment._id)))
+  const handleDeleteComment = id => {
+    console.log("CHECK THIS OUT", id)
+    locationService.deleteOne(id)
+    // .then(deletedComment => setLocations
+    //   (locations.filter(location => 
+    //     location.id !== deletedComment.id)))
   }
   
 
