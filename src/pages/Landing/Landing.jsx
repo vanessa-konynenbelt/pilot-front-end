@@ -7,14 +7,15 @@ const Landing = ({ user }) => {
   return (
     <>
     <Header />
+     <img className="img-fluid" src={require("./bg-masthead.jpg")} alt="..." />
       <header className="masthead">
               <div className="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                   <div className="d-flex justify-content-center">
                       <div className="text-center">
-                          <br /><br /><br />
                           <h1 className="mx-auto my-0 text-uppercase text-black">pilot</h1>
-                          <h2 className="text-black-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
-                          <a className="btn btn-primary" href="#about">Get Started</a>
+                          <h2 className="text-black-50 mx-auto mt-2 mb-5">Connect with open water swimmers, find pilots, and discover new open water</h2>
+                          <a className="btn btn-primary m-3" href="#about">Find a Swim Spot</a>
+                          <a className="btn btn-primary m-3" href="#about">Find a Swim Buddy</a>
                       </div>
                   </div>
               </div>
@@ -30,7 +31,7 @@ const Landing = ({ user }) => {
                         </p>
                     </div>
                 </div>
-                <img className="img-fluid" src={require("./bg-masthead.jpg")} alt="..." />
+                
             </div>
         </section>
     <Footer />
