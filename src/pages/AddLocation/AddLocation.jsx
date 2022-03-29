@@ -23,14 +23,26 @@ function AddLocation(props) {
   setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
+	const handleChangePhoto = (evt) => {
+		setFormData({...formData, pictures: evt.target.files[0]})
+	}
+
   const handleSubmit = evt => {
     evt.preventDefault()
+		const locationFormData = new FormData()
+		locationFormData.append('pictures', formData.pictures)
+		locationFormData.append('name', formData.name)
+		locationFormData.append('description', formData.description)
+		locationFormData.append('entryPoints', formData.entryPoints)
+		locationFormData.append('rating', formData.rating)
+		props.handleAddLocation(locationFormData)
+	
+
 		getLocation(formData.name)
 		.then(locationData => {
 			setLocationData(locationData)
 		}, [])
     props.handleAddLocation(formData)
-		
   }
 
 	return (
@@ -90,19 +102,17 @@ function AddLocation(props) {
             value={formData.rating}
             onChange={handleChange}
 					/>
-
 				</div>
 				<div className="form-group mb-3">
-					<label htmlFor="pictures-input" className="form-label">
+					<label htmlFor="photo-upload" className="form-label">
 						Pictures
 					</label>
 					<input 
-						type="text"
+						type="file"
 						className="form-control"
-						id="name-input"
+						id="photo-upload"
 						name="pictures"
-            value={formData.pictures}
-            onChange={handleChange}
+            onChange={handleChangePhoto}
 					/>
 				</div><br />
         <button
@@ -115,8 +125,6 @@ function AddLocation(props) {
 			</form>
 		</>
 	)
-
-
 }
 
 export default AddLocation
