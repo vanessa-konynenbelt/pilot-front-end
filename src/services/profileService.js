@@ -9,14 +9,4 @@ async function getAllProfiles() {
   return await res.json()
 }
 
-function deleteOne(id) {
-  return fetch(`${BASE_URL}/${id}/comments/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`
-    },
-  })
-  .then(res => res.json())
-}
-
-export { getAllProfiles, deleteOne }
+export { getAllProfiles }
