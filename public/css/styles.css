@@ -4181,6 +4181,13 @@ textarea.form-control-lg {
   padding-right: 0;
   padding-left: 0;
 }
+
+.welcome{
+  padding: 2rem 1.5rem;
+  color: #fff;
+
+}
+
 .navbar-nav .dropdown-menu {
   position: static;
 }
