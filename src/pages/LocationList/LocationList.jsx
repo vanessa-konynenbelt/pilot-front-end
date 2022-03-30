@@ -19,7 +19,7 @@ function LocationList(props) {
                 <h4>{location.name}</h4>
               </Link>
               <p>{location.description}</p>
-              <div src={getLocation.name}></div>
+              <div src={getLocation()}></div>
             </div>
            
           ))}
