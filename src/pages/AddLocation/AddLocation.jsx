@@ -1,6 +1,6 @@
 
 import { useState, useRef, useEffect } from "react"
-import { getLocation } from '../../services/locations'
+import { getLocation, handleApiSubmit } from '../../services/locations'
 
 function AddLocation(props) {
   const formElement = useRef()
@@ -45,6 +45,15 @@ function AddLocation(props) {
     props.handleAddLocation(formData)
   }
 
+	const handleApiSubmit = async evt => {
+    evt.preventDefault()
+    try {
+      setFormData(formData.name)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
 	return (
 		<>
 		<body>
@@ -62,6 +71,7 @@ function AddLocation(props) {
 						required
             value={formData.name}
             onChange={handleChange}
+						onSubmit={handleApiSubmit}
 					/>
 				</div><br />
 				<div className="form-group mb-3">

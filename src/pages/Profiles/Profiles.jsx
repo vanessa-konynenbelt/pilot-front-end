@@ -16,7 +16,14 @@ const Profiles = () => {
       {profiles.length ? 
         <>
           {profiles.map(profile=>
-            <p key={profile._id}>{profile.name}</p>
+          <div>
+            <h2 key={profile._id}>{profile.name}</h2>
+            <img 
+            src={profiles.photo}
+            alt='me'
+            className='profile-pic'
+            />
+            </div>
           )}
         </>
       :

@@ -15,6 +15,8 @@ import { create, getAll, getLocation, update, createComment, show, deleteOne} fr
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditLocation from './pages/EditLocation/EditLocation'
 import Header from '../src/components/header'
+import Map from 'react-map-gl'
+
 
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
@@ -43,68 +45,19 @@ import Header from '../src/components/header'
     console.log(location)
     return location
   }
-
-
-  //find location by id
-  //iterate through comments
-  //.then fi
-
-  // const handleDeleteComment = id => {
-
-  //   console.log("CHECK THIS OUT", id)
-  //   deleteOne(id)
-  //   .then(deletedComment => setLocations
-  //     (locations.filter(location => 
-  //       location?._id !== id)))
-
-
-    // try {
-    //   deleteOne(comId)
-    //   console.log(comId)
-    //   setComments(comments.filter(comment => comment._id !== comId))
-    // } catch(err) {
-    //   console.log(err)
-    // }    
-
-
-   
-  //   getLocation(locId)
-  //   .then(location => location.deleteOne(comId))
-  //   .then(deletedComment => { 
-  //     console.log('LOOK', comId) 
-  //     setLocations
-  //     (locations.comments.filter(comment => 
-  //       comment._id !== comId))})
-  // }
-
   
-  const handleDeleteComment = (location, comId) => {
-    // find location first
-        getLocation(location)
-    // take location
-        .then(location => {
-          console.log(location)
+  const handleDeleteComment = (location, comId)  => {
     // delete comment by Id
-    deleteOne(location, comId)})
-    .then(newLocation => {
-      setLocations(locations.map(locat => {
-        if(locat._id === newLocation._id) {
-          return newLocation
-        } else {
-          return locat
-        }
-      }))
+    deleteOne(location._id, comId)
+    .then(deletedComment => {
+      setLocations(locations.filter(comment => comment._id !== comId))
     })
-    // set the state of the locations while removing the location's comment by id using filter method
-    // setLocations(locations.comment.filter(comment => 
-    //   comment._id !== comId))
+    window.location.reload()
     }
 
 
   const handleUpdateLocation= updatedLocationData => {
     update(updatedLocationData)
-
-
     .then(updatedLocation => {
       const newLocationsArray = locations.map(location => 
         location._id === updatedLocation._id ? updatedLocation : location)
@@ -172,7 +125,6 @@ import Header from '../src/components/header'
         <Route 
           path='/edit' 
           element= {<EditLocation user={user} locations={locations} handleUpdateLocation={handleUpdateLocation} />}/>
-          
         
       </Routes>
     </>
