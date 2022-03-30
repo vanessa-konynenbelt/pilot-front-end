@@ -18,6 +18,7 @@ const SignupForm = props => {
     pilot: false,
     kayakSUP: false,
     photo: '',
+
   })
 
   const handleChange = e => {
@@ -27,6 +28,7 @@ const SignupForm = props => {
       [e.target.name]: e.target.value,
     })
   }
+
 
   const handleToggle = e => {
     props.updateMessage('')
@@ -53,7 +55,6 @@ const SignupForm = props => {
     profileFormData.append('kayakSUP', formData.kayakSUP)
     profileFormData.append('skillLevel', formData.skillLevel)
     props.handleSignupOrLogin(profileFormData)
-    
       await authService.signup(formData)
       props.handleSignupOrLogin()
       navigate('/')
@@ -62,11 +63,8 @@ const SignupForm = props => {
     }
   }
 
-  const handleChangePhoto = (evt) => {
-    setFormData({...formData, photo: evt.target.files[0]})
-  }
-
   const { name, email, password, passwordConf, location, skillLevel, contact, pilot, kayakSUP} = formData
+
 
   const isFormInvalid = () => {
     return !(name && email && password && password === passwordConf)
@@ -145,9 +143,10 @@ const SignupForm = props => {
           type="text"
           autoComplete="off"
           id="location"
-          value={contact}
+          //value={contact}
           name="contact"
           onChange={handleChange}
+
         />
       </div>
       <div>
@@ -179,8 +178,8 @@ const SignupForm = props => {
           name="photo"
           onChange={handleChangePhoto}
         />
-      </div> <br/>
-      <div className={styles.inputContainer}>
+      </div>
+     <div className={styles.inputContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
         </button>

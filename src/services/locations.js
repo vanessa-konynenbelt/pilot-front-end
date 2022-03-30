@@ -30,8 +30,8 @@ function getAll() {
 function getLocation(name) {
   //  new Map('MyMap')
   console.log('name is', name)
-  return fetch (`/${name}`)
-  .then(res => res.json())
+  return fetch (`${BASE_URL}/${name}`)
+  .then(res => console.log('THIS IS WHAT RES IS', res))
 }
 
 function update(location) {

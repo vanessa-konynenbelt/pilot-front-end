@@ -15,7 +15,9 @@ import { create, getAll, getLocation, update, createComment, show, deleteOne} fr
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditLocation from './pages/EditLocation/EditLocation'
 import Header from '../src/components/header'
-import Map from 'react-map-gl'
+//import Map from 'react-map-gl'
+
+
 
 
   const App = () => {
@@ -86,6 +88,11 @@ import Map from 'react-map-gl'
     getAll()
     .then(allComments => setComments(allComments)
     )
+  }, [])
+
+
+  useEffect(() => {
+    console.log('GET LOCATION IS THIS', getLocation())
   }, [])
 
 
