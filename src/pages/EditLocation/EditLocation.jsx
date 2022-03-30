@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { Link, useLocation } from 'react-router-dom'
+import './EditLocation.module.css' 
 
 function EditLocation(props) {
   const location = useLocation()
