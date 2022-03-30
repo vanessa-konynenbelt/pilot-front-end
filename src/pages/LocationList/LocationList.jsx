@@ -16,6 +16,7 @@ function LocationList(props) {
                 to="/location-page"
                 state={{ location }}
               >
+
               <div className="card" style={{ width: '18rem', height: '18rem' }}>
                 {location.pictures?
                 <>

@@ -14,6 +14,8 @@ import LocationList from "./pages/LocationList/LocationList"
 import { create, getAll, getLocation, update, createComment, show, deleteOne} from './services/locations'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditLocation from './pages/EditLocation/EditLocation'
+import Map from 'react-map-gl'
+
 
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
@@ -121,7 +123,6 @@ import EditLocation from './pages/EditLocation/EditLocation'
         <Route 
           path='/edit' 
           element= {<EditLocation user={user} locations={locations} handleUpdateLocation={handleUpdateLocation} />}/>
-          
         
       </Routes>
     </>
