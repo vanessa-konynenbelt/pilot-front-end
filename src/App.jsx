@@ -77,33 +77,18 @@ import EditLocation from './pages/EditLocation/EditLocation'
   // }
 
   
-  const handleDeleteComment = (location, comId) => {
-    // find location first
-        getLocation(location)
-    // take location
-        .then(location => {
-          console.log(location)
+  const handleDeleteComment = (location, comId)  => {
     // delete comment by Id
-    deleteOne(location, comId)})
-    .then(newLocation => {
-      setLocations(locations.map(locat => {
-        if(locat._id === newLocation._id) {
-          return newLocation
-        } else {
-          return locat
-        }
-      }))
+    deleteOne(location._id, comId)
+    .then(deletedComment => {
+      setLocations(locations.filter(comment => comment._id !== comId))
     })
-    // set the state of the locations while removing the location's comment by id using filter method
-    // setLocations(locations.comment.filter(comment => 
-    //   comment._id !== comId))
+    window.location.reload()
     }
 
 
   const handleUpdateLocation= updatedLocationData => {
     update(updatedLocationData)
-
-
     .then(updatedLocation => {
       const newLocationsArray = locations.map(location => 
         location._id === updatedLocation._id ? updatedLocation : location)
