@@ -19,6 +19,7 @@ import Header from '../src/components/header'
 
 
 
+
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
     const navigate = useNavigate()
@@ -87,6 +88,11 @@ import Header from '../src/components/header'
     getAll()
     .then(allComments => setComments(allComments)
     )
+  }, [])
+
+
+  useEffect(() => {
+    console.log('GET LOCATION IS THIS', getLocation())
   }, [])
 
 
