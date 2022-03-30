@@ -1,6 +1,7 @@
 import * as tokenService from './tokenService'
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/locations`
 
+
 function create(location) {
   return fetch(BASE_URL, {
     method: 'POST',
@@ -28,7 +29,8 @@ function getAll() {
 
 function getLocation(name) {
   //  new Map('MyMap')
-  return fetch (`${BASE_URL}/${name}`)
+  console.log('name is', name)
+  return fetch (`/${name}`)
   .then(res => res.json())
 }
 
