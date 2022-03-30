@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 const Header = ({ user, handleLogout }) => {
      return (
       <>
+      {console.log('this is the user in header', user)}
         <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
           <div className="container px-4 px-lg-5">
           {user ?
