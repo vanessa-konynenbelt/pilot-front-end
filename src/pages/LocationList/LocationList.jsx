@@ -1,7 +1,21 @@
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
-
+import { getLocation } from '../../services/locations'
 
 function LocationList(props) {
+const [binaryImage, setBinaryImage] = useState('')
+
+    useEffect(() => {
+    return getLocation('Lake Michigan')
+    .then(res => {
+      const binary = btoa(String.fromCharCode(...new Uint8Array(res)))
+    console.log(binary)
+    setBinaryImage(binary)
+    })
+}, [])
+
+
+
   return (
     <>
     <body>
@@ -25,7 +39,7 @@ function LocationList(props) {
                   <div className="card-body">
                     <h5 className="card-title">{location.name}</h5>
                     <p className="card-text">{location.description}</p>
-                    <img src='' />
+                    <img src={`data:image/jpeg;base64,${binaryImage}`} />
                   
                   </div>
                 </>

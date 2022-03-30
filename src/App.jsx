@@ -89,12 +89,6 @@ import Map from 'react-map-gl'
     )
   }, [])
 
-
-  useEffect(() => {
-    console.log('GET LOCATION IS THIS', getLocation())
-  }, [])
-
-
   return (
     <>
        <Header user={user} handleLogout={handleLogout} />

@@ -31,7 +31,7 @@ function getLocation(name) {
   //  new Map('MyMap')
   console.log('name is', name)
   return fetch (`${BASE_URL}/${name}`)
-  .then(res => console.log('THIS IS WHAT RES IS', res))
+  .then(res => res.arrayBuffer())
 }
 
 function update(location) {

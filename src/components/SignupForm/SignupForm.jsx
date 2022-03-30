@@ -36,7 +36,7 @@ const SignupForm = props => {
   }
 
 
-  const { name, email, password, passwordConf, location, skillLevel } = formData
+  const { name, email, password, passwordConf, location, skillLevel, contact } = formData
 
 
   const isFormInvalid = () => {

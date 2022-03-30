@@ -40,8 +40,8 @@ function AddLocation(props) {
 
 		getLocation(formData.name)
 		.then(locationData => {
-			setLocationData(locationData)
-		}, [])
+			console.log(locationData)
+		})
     // props.handleAddLocation(formData)
   }
 
