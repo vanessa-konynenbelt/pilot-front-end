@@ -37,6 +37,7 @@
   }
 }
 
-.body {
-  
+body {
+  margin-top: 100px !important;
+  background-color: black;
 }
