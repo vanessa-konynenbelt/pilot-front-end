@@ -12,12 +12,14 @@ const Profiles = () => {
   return (
     <>
     <body>
-      <h1>Hello. This is a list of all the profiles.</h1>
+      <h1>Find a swim buddy!</h1>
       {profiles.length ? 
         <>
           {profiles.map(profile=>
-          <div>
-            <h2 key={profile._id}>{profile.name}</h2>
+          <div key={profile._id}>
+            <h2>{profile.name}, {profile.location}</h2>
+            <h4>{profile.skillLevel} swimmer</h4>
+            <p>{profile.pilot}</p>
             <img 
             src={profiles.photo}
             alt='me'
