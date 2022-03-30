@@ -1,4 +1,3 @@
-import { getAll, getLocation } from "../../services/locations";
 import { useEffect, useState, useRef } from "react";
 import { useLocation, Link } from "react-router-dom";
 
@@ -24,6 +23,7 @@ const LocationDetails = (props) => {
     const updatedLocation= await props.handleAddComment(locationDetails._id, commentData)
     setLocationDetails(updatedLocation)
   }
+
 
   return ( 
     <>

@@ -42,40 +42,6 @@ import EditLocation from './pages/EditLocation/EditLocation'
     console.log(location)
     return location
   }
-
-
-  //find location by id
-  //iterate through comments
-  //.then fi
-
-  // const handleDeleteComment = id => {
-
-  //   console.log("CHECK THIS OUT", id)
-  //   deleteOne(id)
-  //   .then(deletedComment => setLocations
-  //     (locations.filter(location => 
-  //       location?._id !== id)))
-
-
-    // try {
-    //   deleteOne(comId)
-    //   console.log(comId)
-    //   setComments(comments.filter(comment => comment._id !== comId))
-    // } catch(err) {
-    //   console.log(err)
-    // }    
-
-
-   
-  //   getLocation(locId)
-  //   .then(location => location.deleteOne(comId))
-  //   .then(deletedComment => { 
-  //     console.log('LOOK', comId) 
-  //     setLocations
-  //     (locations.comments.filter(comment => 
-  //       comment._id !== comId))})
-  // }
-
   
   const handleDeleteComment = (location, comId)  => {
     // delete comment by Id
