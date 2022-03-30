@@ -10,11 +10,11 @@ const ChangePassword = props => {
   }
 
   return (
-    <main className={styles.container}>
+    <body className={styles.container}>
       <h1>Change Password</h1>
       <p>{message}</p>
       <ChangePasswordForm {...props} updateMessage={updateMessage} />
-    </main>
+    </body>
   )
 }
 

@@ -13,6 +13,7 @@ const SignupForm = props => {
     passwordConf: '',
     location: '',
     skillLevel: '',
+    contact: '',
   })
 
   const handleChange = e => {
@@ -34,7 +35,9 @@ const SignupForm = props => {
     }
   }
 
+
   const { name, email, password, passwordConf, location, skillLevel } = formData
+
 
   const isFormInvalid = () => {
     return !(name && email && password && password === passwordConf)
@@ -47,7 +50,7 @@ const SignupForm = props => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
+        <label htmlFor="name" className={styles.label}>Name*</label>
         <input
           type="text"
           autoComplete="off"
@@ -58,7 +61,7 @@ const SignupForm = props => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
+        <label htmlFor="email" className={styles.label}>Email*</label>
         <input
           type="text"
           autoComplete="off"
@@ -69,7 +72,7 @@ const SignupForm = props => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
+        <label htmlFor="password" className={styles.label}>Password*</label>
         <input
           type="password"
           autoComplete="off"
@@ -81,7 +84,7 @@ const SignupForm = props => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="confirm" className={styles.label}>
-          Confirm Password
+          Confirm Password*
         </label>
         <input
           type="password"
@@ -105,17 +108,20 @@ const SignupForm = props => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="skillLevel" className={styles.label}>Skill Level</label>
-        <HoverRating></HoverRating>
-        <input
-          type="number"
+        <HoverRating skillLevel = {{skillLevel}}></HoverRating>
+     </div>
+      <div className={styles.inputContainer}>
+          <label htmlFor="skillLevel" className={styles.label}>Contact Info</label>
+          <input
+          type="text"
           autoComplete="off"
-          id="skillLevel"
-          value={skillLevel}
-          name="skillLevel"
+          id="location"
+          value={contact}
+          name="contact"
           onChange={handleChange}
         /> 
      </div> <br/>
-      <div className={styles.inputContainer}>
+     <div className={styles.inputContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
         </button>

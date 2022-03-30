@@ -14,7 +14,9 @@ import LocationList from "./pages/LocationList/LocationList"
 import { create, getAll, getLocation, update, createComment, show, deleteOne} from './services/locations'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditLocation from './pages/EditLocation/EditLocation'
-//import Map from 'react-map-gl'
+import Header from '../src/components/header'
+import Map from 'react-map-gl'
+
 
 
   const App = () => {
@@ -90,6 +92,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
 
   return (
     <>
+       <Header user={user} handleLogout={handleLogout} />
       <Routes>
         <Route 
           path="/" 
