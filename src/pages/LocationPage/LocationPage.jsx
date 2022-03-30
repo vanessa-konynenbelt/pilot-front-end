@@ -27,6 +27,7 @@ const LocationDetails = (props) => {
 
   return ( 
     <>
+    <body>
       <h1>Location Details</h1>
           <div>
             <img 
@@ -109,8 +110,10 @@ const LocationDetails = (props) => {
     <h3>No Comments Yet</h3>
     </>
     }
+      
+    </body>
     </>
-   );
+   )
 }
 
 export default LocationDetails;

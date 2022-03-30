@@ -11,6 +11,7 @@ const Profiles = () => {
 
   return (
     <>
+    <body>
       <h1>Hello. This is a list of all the profiles.</h1>
       {profiles.length ? 
         <>
@@ -28,6 +29,7 @@ const Profiles = () => {
       :
         <p>No profiles yet</p>
       }
+    </body>
     </>
   )
 }
