@@ -1,4 +1,3 @@
-import { getAll, getLocation } from "../../services/locations";
 import { useEffect, useState, useRef } from "react";
 import { useLocation, Link } from "react-router-dom";
 
@@ -24,6 +23,7 @@ const LocationDetails = (props) => {
     const updatedLocation= await props.handleAddComment(locationDetails._id, commentData)
     setLocationDetails(updatedLocation)
   }
+
 
   return ( 
     <>
@@ -89,9 +89,8 @@ const LocationDetails = (props) => {
             {props.user.profile === comment.owner?._id ?
               <td><button
                 className="btn btn-sm btn-danger m-left"
-                onClick={()=> { 
-                  console.log('This is what location details is', locationDetails)
-                  props.handleDeleteComment(locationDetails, comment._id) }}
+                onClick={()=>
+                  props.handleDeleteComment(locationDetails, comment._id)}
                 user={props.user}
               >
                 X

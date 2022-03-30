@@ -9,4 +9,19 @@ async function getAllProfiles() {
   return await res.json()
 }
 
-export { getAllProfiles }
+function createProfile(profile) {
+  return fetch(BASE_URL, {
+    method: 'POST',
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`
+  },
+    body: profile
+  })
+  .then(res => res.json())
+}
+
+
+export { 
+  getAllProfiles,
+  createProfile as create
+
+}
