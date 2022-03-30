@@ -6,7 +6,7 @@ import Footer from '../../components/footer'
 const Landing = (props) => {
   return (
     <>
-    <Header user={props.user} handleLogout={props.handleLogout} />
+    {/* <Header user={props.user} handleLogout={props.handleLogout} /> */}
       <header className="masthead">
         <div className="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
             <div className="d-flex justify-content-center">

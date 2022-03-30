@@ -1,4 +1,4 @@
-import { getLocation } from "../../services/locations"
+import Header from '../../components/header'
 import { Link } from "react-router-dom"
 
 
@@ -6,6 +6,7 @@ function LocationList(props) {
   
   return (
     <>
+    {/* <Header user={props.user} handleLogout={props.handleLogout} /> */}
       {props.locations.length?
       <>
       <h2>Find a new swim spot!</h2>

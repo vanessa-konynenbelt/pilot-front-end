@@ -14,6 +14,7 @@ import LocationList from "./pages/LocationList/LocationList"
 import { create, getAll, getLocation, update, createComment, show, deleteOne} from './services/locations'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditLocation from './pages/EditLocation/EditLocation'
+import Header from '../src/components/header'
 
   const App = () => {
     const [user, setUser] = useState(authService.getUser())
@@ -137,6 +138,7 @@ import EditLocation from './pages/EditLocation/EditLocation'
 
   return (
     <>
+       <Header user={user} handleLogout={handleLogout} />
       <Routes>
         <Route 
           path="/" 
