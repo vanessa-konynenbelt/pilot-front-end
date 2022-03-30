@@ -7,7 +7,6 @@ async function signup(user) {
       method: 'POST',
       headers: new Headers({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(user),
-      mode: "cors"
     })
     const json = await res.json()
     if (json.token) {
