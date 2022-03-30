@@ -1,7 +1,5 @@
 //import Button from 'react-bootstrap/Button'
 // import styles from './Landing.module.css'
-import Header from '../../components/header'
-import Footer from '../../components/footer'
 
 const Landing = (props) => {
   return (
