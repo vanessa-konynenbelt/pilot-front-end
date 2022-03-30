@@ -29,7 +29,7 @@ function AddLocation(props) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-		const locationFormData = new formData()
+		const locationFormData = new FormData()
 		locationFormData.append('pictures', formData.pictures)
 		locationFormData.append('name', formData.name)
 		locationFormData.append('description', formData.description)
