@@ -14,6 +14,7 @@ const SignupForm = props => {
     location: '',
     skillLevel: '',
     contact: '',
+    photo: ''
   })
 
   const handleChange = e => {
@@ -24,9 +25,23 @@ const SignupForm = props => {
     })
   }
 
+  const handleChangePhoto = (evt) => {
+    setFormData({...formData, photo: evt.target.files[0]})
+  }
+
   const handleSubmit = async e => {
     e.preventDefault()
     try {
+      const profileFormData = new FormData()
+      profileFormData.append('photo', formData.photo)
+      profileFormData.append('name', formData.name)
+      profileFormData.append('email', formData.email)
+      profileFormData.append('password', formData.password)
+      profileFormData.append('passwordConf', formData.passwordConf)
+      profileFormData.append('location', formData.location)
+      profileFormData.append('skillLevel', formData.skillLevel)
+      profileFormData.append('contact', formData.contact)
+      props.handleSignupOrLogin(profileFormData)
       await authService.signup(formData)
       props.handleSignupOrLogin()
       navigate('/')
@@ -117,11 +132,23 @@ const SignupForm = props => {
           type="text"
           autoComplete="off"
           id="location"
-          value={contact}
+          //value={contact}
           name="contact"
           onChange={handleChange}
         /> 
      </div> <br/>
+     <div className="form-group mb-4">
+        <label htmlFor="photo-upload" className="form-label">
+          Upload Photo  
+        </label>
+        <input
+          type="file"
+          className="form-control"
+          id="photo-upload"
+          name="photo"
+          onChange={handleChangePhoto}
+        />
+      </div>
      <div className={styles.inputContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
