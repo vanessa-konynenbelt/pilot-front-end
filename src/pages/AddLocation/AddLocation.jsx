@@ -42,7 +42,7 @@ function AddLocation(props) {
 		.then(locationData => {
 			setLocationData(locationData)
 		}, [])
-    props.handleAddLocation(formData)
+    // props.handleAddLocation(formData)
   }
 
 	const handleApiSubmit = async evt => {
