@@ -33,6 +33,10 @@ const [binaryImage, setBinaryImage] = useState('')
                 {location.pictures?
                 <>
                   <img className="card-img-top" src={location.pictures} alt="..."></img>
+                  <div className="card-body">
+                    <h5 className="card-title">{location.name}</h5>
+                    <p className="card-text">{location.description}</p>
+                  </div>
                 </>
                 :
                 <>
@@ -47,6 +51,7 @@ const [binaryImage, setBinaryImage] = useState('')
               </div>
             </Link>
           ))}
+           <a className="btn btn-primary m-3" href="/add-location">Add a swim spot</a>
         </div>
       </>
       :

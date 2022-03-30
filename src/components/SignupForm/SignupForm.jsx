@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
 import HoverRating from './HoverRating'
+import Checkbox from '@mui/material/Checkbox'
 
 const SignupForm = props => {
   const navigate = useNavigate()
@@ -14,6 +15,10 @@ const SignupForm = props => {
     location: '',
     skillLevel: '',
     contact: '',
+    pilot: false,
+    kayakSUP: false,
+    photo: '',
+
   })
 
   const handleChange = e => {
@@ -24,9 +29,32 @@ const SignupForm = props => {
     })
   }
 
+
+  const handleToggle = e => {
+    props.updateMessage('')
+    setFormData({
+      ...formData,
+      [e.target.name]: !formData[e.target.name]
+    })
+  }
+
+  useEffect(()=>{console.log('formdata', formData)}, [formData])
+
   const handleSubmit = async e => {
     e.preventDefault()
     try {
+    const profileFormData = new FormData()
+    profileFormData.append('photo', formData.photo)
+		profileFormData.append('name', formData.name)
+		profileFormData.append('email', formData.email)
+		profileFormData.append('password', formData.password)
+		profileFormData.append('passwordConf', formData.passwordConf)
+    profileFormData.append('location', formData.location)
+    profileFormData.append('contact', formData.contact)
+    profileFormData.append('pilot', formData.pilot)
+    profileFormData.append('kayakSUP', formData.kayakSUP)
+    profileFormData.append('skillLevel', formData.skillLevel)
+    props.handleSignupOrLogin(profileFormData)
       await authService.signup(formData)
       props.handleSignupOrLogin()
       navigate('/')
@@ -36,7 +64,9 @@ const SignupForm = props => {
   }
 
 
-  const { name, email, password, passwordConf, location, skillLevel, contact } = formData
+=======
+  const { name, email, password, passwordConf, location, skillLevel, contact, pilot, kayakSUP} = formData
+
 
 
   const isFormInvalid = () => {
@@ -116,11 +146,42 @@ const SignupForm = props => {
           type="text"
           autoComplete="off"
           id="location"
-          value={contact}
+          //value={contact}
           name="contact"
           onChange={handleChange}
-        /> 
-     </div> <br/>
+
+        />
+      </div>
+      <div>
+        <label>Willing to Pilot?</label>
+        <Checkbox
+          id="pilot"
+          value={pilot}
+          name="pilot"
+          onChange={handleToggle}
+        />
+      </div>
+      <div>
+        <label>Do you have a Kayak or SUP?</label>
+        <Checkbox
+          id="kayakSUP"
+          value={kayakSUP}
+          name="kayakSUP"
+          onChange={handleToggle}
+        />
+      </div>
+      <div className="form-group mb-4">
+        <label htmlFor="photo-upload" className="form-label">
+          Upload Photo  
+        </label>
+        <input
+          type="file"
+          className="form-control"
+          id="photo-upload"
+          name="photo"
+          onChange={handleChangePhoto}
+        />
+      </div>
      <div className={styles.inputContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
