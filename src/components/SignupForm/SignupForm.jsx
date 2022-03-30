@@ -13,6 +13,7 @@ const SignupForm = props => {
     passwordConf: '',
     location: '',
     skillLevel: '',
+    photo: '',
   })
 
   const handleChange = e => {
@@ -26,6 +27,16 @@ const SignupForm = props => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
+    const profileFormData = new FormData()
+    profileFormData.append('photo', formData.photo)
+		profileFormData.append('name', formData.name)
+		profileFormData.append('email', formData.email)
+		profileFormData.append('password', formData.password)
+		profileFormData.append('passwordConf', formData.passwordConf)
+    profileFormData.append('location', formData.location)
+    profileFormData.append('skillLevel', formData.skillLevel)
+    props.handleSignupOrLogin(profileFormData)
+    
       await authService.signup(formData)
       props.handleSignupOrLogin()
       navigate('/')
