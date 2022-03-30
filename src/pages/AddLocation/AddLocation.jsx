@@ -47,6 +47,7 @@ function AddLocation(props) {
 
 	return (
 		<>
+		<body>
 			<h1>Add Location</h1>
 			<form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
@@ -123,6 +124,7 @@ function AddLocation(props) {
 						Add Swim Location
 					</button>
 			</form>
+		</body>
 		</>
 	)
 }
