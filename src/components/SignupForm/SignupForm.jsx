@@ -14,7 +14,6 @@ const SignupForm = props => {
     location: '',
     skillLevel: '',
     contact: '',
-    photo: '',
   })
 
   const handleChange = e => {
@@ -28,17 +27,6 @@ const SignupForm = props => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-    const profileFormData = new FormData()
-    profileFormData.append('photo', formData.photo)
-		profileFormData.append('name', formData.name)
-		profileFormData.append('email', formData.email)
-		profileFormData.append('password', formData.password)
-		profileFormData.append('passwordConf', formData.passwordConf)
-    profileFormData.append('location', formData.location)
-    profileFormData.append('contact', formData.contact)
-    profileFormData.append('skillLevel', formData.skillLevel)
-    props.handleSignupOrLogin(profileFormData)
-    
       await authService.signup(formData)
       props.handleSignupOrLogin()
       navigate('/')
@@ -47,11 +35,9 @@ const SignupForm = props => {
     }
   }
 
-  const handleChangePhoto = (evt) => {
-    setFormData({...formData, photo: evt.target.files[0]})
-  }
 
-  const { name, email, password, passwordConf, location, skillLevel, contact } = formData
+  const { name, email, password, passwordConf, location, skillLevel } = formData
+
 
   const isFormInvalid = () => {
     return !(name && email && password && password === passwordConf)
@@ -133,21 +119,9 @@ const SignupForm = props => {
           value={contact}
           name="contact"
           onChange={handleChange}
-        />
-      </div>
-      <div className="form-group mb-4">
-        <label htmlFor="photo-upload" className="form-label">
-          Upload Photo  
-        </label>
-        <input
-          type="file"
-          className="form-control"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
-        />
-      </div> <br/>
-      <div className={styles.inputContainer}>
+        /> 
+     </div> <br/>
+     <div className={styles.inputContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
         </button>
