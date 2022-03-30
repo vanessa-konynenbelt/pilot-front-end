@@ -26,7 +26,8 @@ const SignupForm = props => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const profileFormData = new formData()
+    try {
+    const profileFormData = new FormData()
     profileFormData.append('photo', formData.photo)
 		profileFormData.append('name', formData.name)
 		profileFormData.append('email', formData.email)
@@ -34,8 +35,8 @@ const SignupForm = props => {
 		profileFormData.append('passwordConf', formData.passwordConf)
     profileFormData.append('location', formData.location)
     profileFormData.append('skillLevel', formData.skillLevel)
-    props.handleSignUpForm(profileFormData)
-    try {
+    props.handleSignupOrLogin(profileFormData)
+    
       await authService.signup(formData)
       props.handleSignupOrLogin()
       navigate('/')
