@@ -11,25 +11,36 @@ const Profiles = () => {
 
   return (
     <>
-    <body>
-      <h1>Hello. This is a list of all the profiles.</h1>
-      {profiles.length ? 
-        <>
-          {profiles.map(profile=>
-          <div>
-            <h2 key={profile._id}>{profile.name}</h2>
-            <img 
-            src={profiles.photo}
-            alt='me'
-            className='profile-pic'
-            />
+      <body>
+        {profiles.length ? 
+          <>
+          <h2>Find a swim buddy!</h2>
+            <div className="card-group">
+              {profiles.map(profile=>
+                  <div key={profile._id} className="card" style={{ width: '18rem', height: '18rem' }}>
+                    {profiles.photo?
+                      <>
+                        <img 
+                          src={profiles.photo}
+                          alt='me'
+                          className='card-img-top profile-pic'></img>
+                      </>
+                      :
+                      <>
+                        <div className="card-body">
+                          <h5 className="card-title">{profile.name}, {profile.location}</h5>
+                          <p className="card-text">Swim level: {profile.skillLevel}</p>
+                        </div>
+                      </>
+                      }  
+                    </div>
+              )}
             </div>
-          )}
-        </>
-      :
-        <p>No profiles yet</p>
-      }
-    </body>
+          </>
+          :
+            <p>No profiles yet</p>
+          }
+      </body>
     </>
   )
 }

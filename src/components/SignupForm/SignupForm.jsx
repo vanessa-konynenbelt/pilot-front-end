@@ -13,6 +13,7 @@ const SignupForm = props => {
     passwordConf: '',
     location: '',
     skillLevel: '',
+    contact: '',
     photo: '',
   })
 
@@ -34,6 +35,7 @@ const SignupForm = props => {
 		profileFormData.append('password', formData.password)
 		profileFormData.append('passwordConf', formData.passwordConf)
     profileFormData.append('location', formData.location)
+    profileFormData.append('contact', formData.contact)
     profileFormData.append('skillLevel', formData.skillLevel)
     props.handleSignupOrLogin(profileFormData)
     
@@ -49,7 +51,7 @@ const SignupForm = props => {
     setFormData({...formData, photo: evt.target.files[0]})
   }
 
-  const { name, email, password, passwordConf, location, skillLevel } = formData
+  const { name, email, password, passwordConf, location, skillLevel, contact } = formData
 
   const isFormInvalid = () => {
     return !(name && email && password && password === passwordConf)
@@ -62,7 +64,7 @@ const SignupForm = props => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
+        <label htmlFor="name" className={styles.label}>Name*</label>
         <input
           type="text"
           autoComplete="off"
@@ -73,7 +75,7 @@ const SignupForm = props => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
+        <label htmlFor="email" className={styles.label}>Email*</label>
         <input
           type="text"
           autoComplete="off"
@@ -84,7 +86,7 @@ const SignupForm = props => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
+        <label htmlFor="password" className={styles.label}>Password*</label>
         <input
           type="password"
           autoComplete="off"
@@ -96,7 +98,7 @@ const SignupForm = props => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="confirm" className={styles.label}>
-          Confirm Password
+          Confirm Password*
         </label>
         <input
           type="password"
@@ -120,16 +122,19 @@ const SignupForm = props => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="skillLevel" className={styles.label}>Skill Level</label>
-        <HoverRating></HoverRating>
-        <input
-          type="number"
-          autoComplete="off"
-          id="skillLevel"
-          value={skillLevel}
-          name="skillLevel"
-          onChange={handleChange}
-        /> 
+        <HoverRating skillLevel = {{skillLevel}}></HoverRating>
      </div>
+      <div className={styles.inputContainer}>
+          <label htmlFor="skillLevel" className={styles.label}>Contact Info</label>
+          <input
+          type="text"
+          autoComplete="off"
+          id="location"
+          value={contact}
+          name="contact"
+          onChange={handleChange}
+        />
+      </div>
       <div className="form-group mb-4">
         <label htmlFor="photo-upload" className="form-label">
           Upload Photo  
