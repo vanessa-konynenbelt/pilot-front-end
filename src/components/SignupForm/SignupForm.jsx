@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
 import HoverRating from './HoverRating'
+import Checkbox from '@mui/material/Checkbox'
 
 const SignupForm = props => {
   const navigate = useNavigate()
@@ -14,6 +15,8 @@ const SignupForm = props => {
     location: '',
     skillLevel: '',
     contact: '',
+    pilot: false,
+    kayakSUP: false,
     photo: '',
   })
 
@@ -24,6 +27,16 @@ const SignupForm = props => {
       [e.target.name]: e.target.value,
     })
   }
+
+  const handleToggle = e => {
+    props.updateMessage('')
+    setFormData({
+      ...formData,
+      [e.target.name]: !formData[e.target.name]
+    })
+  }
+
+  useEffect(()=>{console.log('formdata', formData)}, [formData])
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -36,6 +49,8 @@ const SignupForm = props => {
 		profileFormData.append('passwordConf', formData.passwordConf)
     profileFormData.append('location', formData.location)
     profileFormData.append('contact', formData.contact)
+    profileFormData.append('pilot', formData.pilot)
+    profileFormData.append('kayakSUP', formData.kayakSUP)
     profileFormData.append('skillLevel', formData.skillLevel)
     props.handleSignupOrLogin(profileFormData)
     
@@ -51,7 +66,7 @@ const SignupForm = props => {
     setFormData({...formData, photo: evt.target.files[0]})
   }
 
-  const { name, email, password, passwordConf, location, skillLevel, contact } = formData
+  const { name, email, password, passwordConf, location, skillLevel, contact, pilot, kayakSUP} = formData
 
   const isFormInvalid = () => {
     return !(name && email && password && password === passwordConf)
@@ -133,6 +148,24 @@ const SignupForm = props => {
           value={contact}
           name="contact"
           onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>Willing to Pilot?</label>
+        <Checkbox
+          id="pilot"
+          value={pilot}
+          name="pilot"
+          onChange={handleToggle}
+        />
+      </div>
+      <div>
+        <label>Do you have a Kayak or SUP?</label>
+        <Checkbox
+          id="kayakSUP"
+          value={kayakSUP}
+          name="kayakSUP"
+          onChange={handleToggle}
         />
       </div>
       <div className="form-group mb-4">
