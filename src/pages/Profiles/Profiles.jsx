@@ -34,7 +34,9 @@ const Profiles = () => {
                         <img 
                           src={profile.photo}
                           alt='me'
-                          className='card-img-top profile-pic'></img>
+                          className='card-img-top profile-pic'
+                          height>
+                          </img>
                           <div className="card-body">
 
                           <h5 className="card-title">{profile.name}, {profile.location}</h5>
