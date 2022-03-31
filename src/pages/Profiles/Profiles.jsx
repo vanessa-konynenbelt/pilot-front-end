@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import * as profileService from '../../services/profileService'
 import HoverRating from '../../components/SignupForm/HoverRating'
+import styles from './Profiles.module.css'
+
 
 const Profiles = () => {
   const [profiles, setProfiles] = useState([])
@@ -20,21 +22,21 @@ const Profiles = () => {
 
   return (
     <>
-      <body>
+    <h2>Find a swim buddy!</h2><br></br>
+      <body className={styles.container}>
         {profiles.length ? 
           <>
-          <h2>Find a swim buddy!</h2>
-            <div className="card-group">
               {profiles.map(profile=>
+              <div className="card-group">
                   <div key={profile._id} className="card" style={{ width: '18rem', height: '18rem' }}>
                     {profile.photo?
                       <>
                         <img 
-                          //style={{ width: '18rem', height: '8rem'}}
                           src={profile.photo}
                           alt='me'
                           className='card-img-top profile-pic'></img>
                           <div className="card-body">
+
                           <h5 className="card-title">{profile.name}, {profile.location}</h5>
                           {profile.skillLevel?
                           <>
@@ -83,16 +85,16 @@ const Profiles = () => {
                           }
                         </div>
                       </>
-                      }  
-                    </div>
+                    }  
+                  </div>
+              </div>
               )}
-            </div>
           </>
           :
-            <p>No profiles yet</p>
-          }
+          <p>No profiles yet</p>
+        }
       </body>
-    </>
+      </>
   )
 }
 
