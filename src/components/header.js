@@ -10,7 +10,7 @@ const Header = ({ user, handleLogout }) => {
               <div className="collapse navbar-collapse" id="navbarResponsive">
                 {user ?
                   <ul className="navbar-nav ms-auto">
-                      <li className="navbar-item welcome">Welcome, {user?.name}!</li>
+                      <li className="nav-item welcome">Welcome, {user?.name}!</li>
                       <li className="nav-item"><a className="nav-link home" href="/">Home</a></li>
                       <li className="nav-item"><a className="nav-link" href="/" onClick={handleLogout}>log out</a></li>
                       <li className="nav-item"><a className="nav-link" href="/changePassword">Change Password</a></li>
