@@ -38,6 +38,9 @@
 }
 
 body {
-  margin-top: 56px !important;
-  background-color: black;
+  margin-top: 112px !important;
+}
+
+#root {
+  margin-top: 112px !important;
 }
