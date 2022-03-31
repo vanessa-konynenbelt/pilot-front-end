@@ -16,38 +16,35 @@ const Profiles = () => {
       <body className={styles.container}>
         {profiles.length ? 
           <>
-          
-            
               {profiles.map(profile=>
               <div className="card-group">
                   <div key={profile._id} className="card" style={{ width: '18rem', height: '18rem' }}>
                     {profile.photo?
                       <>
                         <img 
-                          style={{'width': '200px'}}
+                          style={{'width': '100px'}}
                           src={profile.photo}
                           alt='me'
                           className='card-img-top profile-pic'></img>
-                      </>
-                      :
-                      <>
-                        <div className="card-body">
+                          <div className="card-body">
                           <h5 className="card-title">{profile.name}, {profile.location}</h5>
                           <p className="card-text">Swim level: {profile.skillLevel}</p>
-                        </div>
+                          </div>
                       </>
-                      }  
-                    </div>
-                </div>
+                      :
+                      <p>No photo yet</p>
+                    }  
+                  </div>
+              </div>
               )}
-            
           </>
           :
-            <p>No profiles yet</p>
-          }
+          <p>No profiles yet</p>
+        }
       </body>
-    </>
+      </>
   )
 }
- 
+
+
 export default Profiles
