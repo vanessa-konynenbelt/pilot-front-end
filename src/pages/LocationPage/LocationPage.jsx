@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation, Link } from "react-router-dom";
-
+import './LocationPage.module.css'
 
 const LocationDetails = (props) => {
   const [locationDetails, setLocationDetails] = useState({})
