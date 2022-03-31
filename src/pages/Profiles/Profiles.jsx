@@ -27,21 +27,19 @@ const Profiles = () => {
             <div className="card-group">
               {profiles.map(profile=>
                   <div key={profile._id} className="card" style={{ width: '18rem', height: '18rem' }}>
-                    {profiles.photo?
+                    {profile.photo?
                       <>
                         <img 
-                          src={profiles.photo}
+                          //style={{ width: '18rem', height: '8rem'}}
+                          src={profile.photo}
                           alt='me'
                           className='card-img-top profile-pic'></img>
-                      </>
-                      :
-                      <>
-                        <div className="card-body">
+                          <div className="card-body">
                           <h5 className="card-title">{profile.name}, {profile.location}</h5>
                           {profile.skillLevel?
                           <>
                             <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
-                            <HoverRating skillLevel = {profile.skillLevel}></HoverRating>
+                            {/* <HoverRating></HoverRating> */}
                            </>
                             : <p></p>
                           }
@@ -53,7 +51,36 @@ const Profiles = () => {
                             <p className="card-text">🛶</p>
                             : <p></p>
                           }
-                          <p className="card-text">Contact info: {profile.contact}</p>
+                          {profile.contact?
+                             <p className="card-text">{profile.contact}</p>
+                            : <p></p>
+                          }
+                        </div>
+                          
+                      </>
+                      :
+                      <>
+                        <div className="card-body">
+                          <h5 className="card-title">{profile.name}, {profile.location}</h5>
+                          {profile.skillLevel?
+                          <>
+                            <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
+                            {/* <HoverRating></HoverRating> */}
+                           </>
+                            : <p></p>
+                          }
+                          {profile.pilot?
+                            <p className="card-text">pilot</p>
+                            : <p></p>
+                          }
+                          {profile.kayakSUP?
+                            <p className="card-text">🛶</p>
+                            : <p></p>
+                          }
+                          {profile.contact?
+                             <p className="card-text">{profile.contact}</p>
+                            : <p></p>
+                          }
                         </div>
                       </>
                       }  
