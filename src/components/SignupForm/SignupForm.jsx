@@ -63,7 +63,10 @@ const SignupForm = props => {
     }
   }
 
+
+=======
   const { name, email, password, passwordConf, location, skillLevel, contact, pilot, kayakSUP} = formData
+
 
 
   const isFormInvalid = () => {

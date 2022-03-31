@@ -90,12 +90,6 @@ import Header from '../src/components/header'
     )
   }, [])
 
-
-  useEffect(() => {
-    console.log('GET LOCATION IS THIS', getLocation())
-  }, [])
-
-
   return (
     <>
        <Header user={user} handleLogout={handleLogout} />
