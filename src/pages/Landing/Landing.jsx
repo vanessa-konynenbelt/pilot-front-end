@@ -1,5 +1,6 @@
 //import Button from 'react-bootstrap/Button'
-// import styles from './Landing.module.css'
+
+import './Landing.module.css'
 
 const Landing = (props) => {
   return (
