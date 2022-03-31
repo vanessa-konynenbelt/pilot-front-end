@@ -18,7 +18,7 @@ const [binaryImage, setBinaryImage] = useState('')
 
   return (
     <>
-    <body>
+    <div className = "parent-card-group">
       {props.locations.length?
       <>
       <h2>Find a new swim spot!</h2>
@@ -59,7 +59,7 @@ const [binaryImage, setBinaryImage] = useState('')
         <h5>Loading swim spots... </h5> 
       </>
       }
-    </body>
+    </div>
     </>
   )
 }

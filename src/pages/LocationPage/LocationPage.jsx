@@ -27,7 +27,6 @@ const LocationDetails = (props) => {
 
   return ( 
     <>
-    <body>
       <h1>Location Details</h1>
           <div>
             <img 
@@ -38,9 +37,7 @@ const LocationDetails = (props) => {
             <p>{locationDetails.name}</p>
             <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
             <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
-            <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p>
-
-          
+            <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p> 
         <Link
           to='/edit'
           state={{location}}
@@ -107,8 +104,6 @@ const LocationDetails = (props) => {
     <h3>No Comments Yet</h3>
     </>
     }
-      
-    </body>
     </>
    )
 }

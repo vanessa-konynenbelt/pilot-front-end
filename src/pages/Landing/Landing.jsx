@@ -1,11 +1,9 @@
-//import Button from 'react-bootstrap/Button'
-
 import './Landing.module.css'
 
 const Landing = (props) => {
   return (
     <>
-    <body className="masthead">
+    <div className="masthead">
       <div className="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
           <div className="d-flex justify-content-center">
               <div className="text-center">
@@ -14,7 +12,7 @@ const Landing = (props) => {
               </div>
           </div>
         </div>
-    </body>
+    </div>
     </>
   )
 }

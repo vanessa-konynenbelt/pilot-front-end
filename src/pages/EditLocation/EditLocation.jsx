@@ -24,7 +24,6 @@ function EditLocation(props) {
 
   return (
 		<>
-		<body>
 			<h1>Edit Location</h1>
 				<form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 					<div className="form-group mb-3">
@@ -91,7 +90,6 @@ function EditLocation(props) {
 						</button>
 						</div>
 				</form>
-			</body>
 		</>
 	)
 }
