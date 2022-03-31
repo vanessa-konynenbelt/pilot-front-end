@@ -85,8 +85,6 @@ const Profiles = () => {
                           }
                         </div>
                       </>
-                      :
-                      <p>No photo yet</p>
                     }  
                   </div>
               </div>
@@ -99,6 +97,5 @@ const Profiles = () => {
       </>
   )
 }
-
 
 export default Profiles

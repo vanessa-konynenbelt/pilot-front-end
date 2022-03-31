@@ -28,7 +28,6 @@ const Header = ({ user, handleLogout }) => {
               <ul className="navbar-nav ms-auto">
                   <li className="nav-item"><a className="nav-link" href="/profiles">Swimmers</a></li>
                   <li className="nav-item"><a className="nav-link" href="/locations">Locations</a></li>
-                  <li className="nav-item"><a className="nav-link" href="/add-location">Add Location</a></li>
               </ul>
             </div>
           </div>
