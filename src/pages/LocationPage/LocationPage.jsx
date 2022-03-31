@@ -40,16 +40,15 @@ const LocationDetails = (props) => {
             <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
             <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p>
 
-          <div className="edit-btn">
+          
         <Link
-          className='btn btn-sm btn-warning'
           to='/edit'
           state={{location}}
         >
-          Edit 
+          <button>Edit</button> 
         </Link><br />
-            <Link to='/locations'>Back to All Locations</Link>
-          </div>
+            <Link to='/locations'><button >Back to All Locations</button></Link>
+
           </div>
           <form onSubmit={handleSubmit}>
           <div className="form-group mb-3">
@@ -68,7 +67,6 @@ const LocationDetails = (props) => {
 				</div>
           <button
 						type="submit"
-						className="btn btn-primary btn-fluid"
 					>
 						Add Comment
 					</button><br></br>
@@ -89,7 +87,6 @@ const LocationDetails = (props) => {
             <td>{comment.owner.name}</td>
             {props.user.profile === comment.owner?._id ?
               <td><button
-                className="btn btn-sm btn-danger m-left"
                 onClick={()=>
                   props.handleDeleteComment(locationDetails, comment._id)}
                 user={props.user}
