@@ -18,10 +18,11 @@ const Profiles = () => {
             <div className="card-group">
               {profiles.map(profile=>
                   <div key={profile._id} className="card" style={{ width: '18rem', height: '18rem' }}>
-                    {profiles.photo?
+                    {profile.photo?
                       <>
                         <img 
-                          src={profiles.photo}
+                          style={{'width': '200px'}}
+                          src={profile.photo}
                           alt='me'
                           className='card-img-top profile-pic'></img>
                       </>

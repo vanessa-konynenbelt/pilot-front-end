@@ -45,7 +45,6 @@ const SignupForm = props => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    try {
     const profileFormData = new FormData()
     profileFormData.append('photo', formData.photo)
 		profileFormData.append('name', formData.name)
@@ -57,8 +56,9 @@ const SignupForm = props => {
     profileFormData.append('pilot', formData.pilot)
     profileFormData.append('kayakSUP', formData.kayakSUP)
     profileFormData.append('skillLevel', formData.skillLevel)
-    props.handleSignupOrLogin(profileFormData)
-      await authService.signup(formData)
+    
+    try {
+      await authService.signup(profileFormData)
       props.handleSignupOrLogin()
       navigate('/')
     } catch (err) {
@@ -172,11 +172,10 @@ const SignupForm = props => {
       </div>
       <div className="form-group mb-4">
         <label htmlFor="photo-upload" className="form-label">
-          Upload Photo  
+          Profile Photo  
         </label>
         <input
           type="file"
-          className="form-control"
           id="photo-upload"
           name="photo"
           onChange={handleChangePhoto}
