@@ -4,6 +4,8 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 5%;
+  font-family: var(--bs-body-font-family);
+  text-align: center !important;
 }
 
 table {
@@ -21,8 +23,7 @@ th, td {
 
 img {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto !important;
 }
 
 
@@ -36,20 +37,15 @@ label {
   font-size: 30px;
 }
 
-Link {
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-}
-
 button {
-  margin: 5%;
+  margin: 0 auto 2% auto !important;
+  justify-content: center !important;
+  align-items: center;
+  background-color: #64a19d;
+  color: white;
+  font-family: var(--bs-body-font-family);
 }
 
 tbody {
   padding: 50px;
-}
-
-.edit-btn {
-  padding: 50%;
 }
