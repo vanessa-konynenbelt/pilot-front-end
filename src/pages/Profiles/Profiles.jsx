@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import * as profileService from '../../services/profileService'
+import HoverRating from '../../components/SignupForm/HoverRating'
 import styles from './Profiles.module.css'
+
 
 const Profiles = () => {
   const [profiles, setProfiles] = useState([])
@@ -9,6 +11,14 @@ const Profiles = () => {
     profileService.getAllProfiles()
     .then(profiles => setProfiles(profiles))
   }, [])
+
+  let levels = [
+     'Beginner',
+     'Novice',
+     'Intermediate',
+     'Advanced',
+     'Pro',
+  ]
 
   return (
     <>
@@ -22,14 +32,58 @@ const Profiles = () => {
                     {profile.photo?
                       <>
                         <img 
-                          style={{'width': '100px'}}
                           src={profile.photo}
                           alt='me'
                           className='card-img-top profile-pic'></img>
                           <div className="card-body">
+
                           <h5 className="card-title">{profile.name}, {profile.location}</h5>
-                          <p className="card-text">Swim level: {profile.skillLevel}</p>
-                          </div>
+                          {profile.skillLevel?
+                          <>
+                            <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
+                            {/* <HoverRating></HoverRating> */}
+                           </>
+                            : <p></p>
+                          }
+                          {profile.pilot?
+                            <p className="card-text">pilot</p>
+                            : <p></p>
+                          }
+                          {profile.kayakSUP?
+                            <p className="card-text">🛶</p>
+                            : <p></p>
+                          }
+                          {profile.contact?
+                             <p className="card-text">{profile.contact}</p>
+                            : <p></p>
+                          }
+                        </div>
+                          
+                      </>
+                      :
+                      <>
+                        <div className="card-body">
+                          <h5 className="card-title">{profile.name}, {profile.location}</h5>
+                          {profile.skillLevel?
+                          <>
+                            <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
+                            {/* <HoverRating></HoverRating> */}
+                           </>
+                            : <p></p>
+                          }
+                          {profile.pilot?
+                            <p className="card-text">pilot</p>
+                            : <p></p>
+                          }
+                          {profile.kayakSUP?
+                            <p className="card-text">🛶</p>
+                            : <p></p>
+                          }
+                          {profile.contact?
+                             <p className="card-text">{profile.contact}</p>
+                            : <p></p>
+                          }
+                        </div>
                       </>
                       :
                       <p>No photo yet</p>
