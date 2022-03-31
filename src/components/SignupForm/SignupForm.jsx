@@ -32,7 +32,7 @@ const SignupForm = props => {
   const handleChangePhoto = (evt) => {
     setFormData({...formData, photo: evt.target.files[0]})
   }
-  
+
   const handleToggle = e => {
     props.updateMessage('')
     setFormData({
@@ -142,14 +142,14 @@ const SignupForm = props => {
       <div className={styles.inputContainer}>
         <label htmlFor="skillLevel" className={styles.label}>Skill Level</label>
         <HoverRating skillLevel = {{skillLevel}}></HoverRating>
-     </div>
+      </div>
       <div className={styles.inputContainer}>
           <label htmlFor="skillLevel" className={styles.label}>Contact Info</label>
           <input
           type="text"
           autoComplete="off"
           id="location"
-          //value={contact}
+          value={contact}
           name="contact"
           onChange={handleChange}
 
@@ -185,7 +185,7 @@ const SignupForm = props => {
           onChange={handleChangePhoto}
         />
       </div>
-     <div className={styles.inputContainer}>
+      <div className={styles.inputContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
         </button>
