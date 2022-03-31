@@ -22,7 +22,6 @@ th, td {
 }
 
 img {
-  display: flex;
   margin: 0 auto !important;
 }
 
@@ -39,11 +38,8 @@ label {
 
 button {
   margin: 0 auto 2% auto !important;
-  justify-content: center !important;
-  align-items: center;
   background-color: #64a19d;
   color: white;
-  font-family: var(--bs-body-font-family);
 }
 
 tbody {
