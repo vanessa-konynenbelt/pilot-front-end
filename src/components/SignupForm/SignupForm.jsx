@@ -29,7 +29,10 @@ const SignupForm = props => {
     })
   }
 
-
+  const handleChangePhoto = (evt) => {
+    setFormData({...formData, photo: evt.target.files[0]})
+  }
+  
   const handleToggle = e => {
     props.updateMessage('')
     setFormData({
@@ -64,7 +67,7 @@ const SignupForm = props => {
   }
 
 
-=======
+
   const { name, email, password, passwordConf, location, skillLevel, contact, pilot, kayakSUP} = formData
 
 
