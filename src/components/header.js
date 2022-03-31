@@ -5,7 +5,7 @@ const Header = ({ user, handleLogout }) => {
       <>
         <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
           <div className="container px-4 px-lg-5">
-            <button className="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler navbar-toggler-right collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               Menu
               <i className="fas fa-bars"></i>
             </button>
