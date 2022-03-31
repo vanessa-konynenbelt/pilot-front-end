@@ -38,10 +38,15 @@
 }
 
 body {
-  margin-top: 112px !important;
-  width: 100%;
+  /* margin-top: 112px !important; */
+  display: flex; 
+  flex-direction: column;
+  width: 100vw;
+  height: auto; 
 }
 
-#root {
-  margin-top: 112px !important;
+.parent-card-group {
+  margin-top: 112px; 
 }
+
+
