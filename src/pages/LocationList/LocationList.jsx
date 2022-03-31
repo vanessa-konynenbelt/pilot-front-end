@@ -22,7 +22,7 @@ const [binaryImage, setBinaryImage] = useState('')
       {props.locations.length?
       <>
       <h2>Find a new swim spot!</h2>
-        <div className="card-group">
+        <div className="container">
           {props.locations.map((location) => (
               <Link 
                 key={location._id}
