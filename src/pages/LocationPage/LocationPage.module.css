@@ -1,0 +1,47 @@
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+  font-family: var(--bs-body-font-family);
+  text-align: center !important;
+}
+
+table {
+  margin: 2% auto;
+  text-align: center;
+}
+
+h1 {
+  font-family: bold;
+}
+
+th, td {
+  font-size: 1.5em;
+}
+
+img {
+  margin: 0 auto !important;
+}
+
+
+label {
+  font-size: large;
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+button {
+  margin: 0 auto 2% auto !important;
+  background-color: #64a19d;
+  color: white;
+}
+
+tbody {
+  padding: 50px;
+}
