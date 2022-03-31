@@ -23,7 +23,7 @@ const Profiles = () => {
   return (
     <>
     <h2>Find a swim buddy!</h2><br></br>
-      <body className={styles.container}>
+      <div className={styles.container}>
         {profiles.length ? 
           <>
               {profiles.map(profile=>
@@ -93,7 +93,7 @@ const Profiles = () => {
           :
           <p>No profiles yet</p>
         }
-      </body>
+      </div>
       </>
   )
 }
