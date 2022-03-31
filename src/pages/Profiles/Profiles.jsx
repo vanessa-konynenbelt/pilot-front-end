@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import * as profileService from '../../services/profileService'
+import HoverRating from '../../components/SignupForm/HoverRating'
+import styles from './Profiles.module.css'
+
 
 const Profiles = () => {
   const [profiles, setProfiles] = useState([])
@@ -9,40 +12,93 @@ const Profiles = () => {
     .then(profiles => setProfiles(profiles))
   }, [])
 
+  let levels = [
+     'Beginner',
+     'Novice',
+     'Intermediate',
+     'Advanced',
+     'Pro',
+  ]
+
   return (
     <>
-      <body>
+    <h2>Find a swim buddy!</h2><br></br>
+      <body className={styles.container}>
         {profiles.length ? 
           <>
-          <h2>Find a swim buddy!</h2>
-            <div className="card-group">
               {profiles.map(profile=>
+              <div className="card-group">
                   <div key={profile._id} className="card" style={{ width: '18rem', height: '18rem' }}>
-                    {profiles.photo?
+                    {profile.photo?
                       <>
                         <img 
-                          src={profiles.photo}
+                          src={profile.photo}
                           alt='me'
                           className='card-img-top profile-pic'></img>
+                          <div className="card-body">
+
+                          <h5 className="card-title">{profile.name}, {profile.location}</h5>
+                          {profile.skillLevel?
+                          <>
+                            <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
+                            {/* <HoverRating></HoverRating> */}
+                           </>
+                            : <p></p>
+                          }
+                          {profile.pilot?
+                            <p className="card-text">pilot</p>
+                            : <p></p>
+                          }
+                          {profile.kayakSUP?
+                            <p className="card-text">🛶</p>
+                            : <p></p>
+                          }
+                          {profile.contact?
+                             <p className="card-text">{profile.contact}</p>
+                            : <p></p>
+                          }
+                        </div>
+                          
                       </>
                       :
                       <>
                         <div className="card-body">
                           <h5 className="card-title">{profile.name}, {profile.location}</h5>
-                          <p className="card-text">Swim level: {profile.skillLevel}</p>
+                          {profile.skillLevel?
+                          <>
+                            <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
+                            {/* <HoverRating></HoverRating> */}
+                           </>
+                            : <p></p>
+                          }
+                          {profile.pilot?
+                            <p className="card-text">pilot</p>
+                            : <p></p>
+                          }
+                          {profile.kayakSUP?
+                            <p className="card-text">🛶</p>
+                            : <p></p>
+                          }
+                          {profile.contact?
+                             <p className="card-text">{profile.contact}</p>
+                            : <p></p>
+                          }
                         </div>
                       </>
-                      }  
-                    </div>
+                      :
+                      <p>No photo yet</p>
+                    }  
+                  </div>
+              </div>
               )}
-            </div>
           </>
           :
-            <p>No profiles yet</p>
-          }
+          <p>No profiles yet</p>
+        }
       </body>
-    </>
+      </>
   )
 }
- 
+
+
 export default Profiles
