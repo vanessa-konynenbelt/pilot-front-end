@@ -27,8 +27,7 @@ const LocationDetails = (props) => {
 
   return ( 
     <>
-      <h1>Location Details</h1>
-          <div>
+        <div className = "parent-card-group">
             <img 
             src={locationDetails.pictures}
             alt='the view'
