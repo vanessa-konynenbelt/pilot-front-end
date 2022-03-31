@@ -5,8 +5,7 @@ async function signup(user) {
   try {
     const res = await fetch(`${BASE_URL}/signup`, {
       method: 'POST',
-      headers: new Headers({ 'Content-Type': 'application/json' }),
-      body: JSON.stringify(user),
+      body: user,
     })
     const json = await res.json()
     if (json.token) {
