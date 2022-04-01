@@ -34,7 +34,7 @@ const LocationDetails = (props) => {
               src={locationDetails.pictures}
               alt='the view'
               className='location-pic'
-              style={{'max-width': "100%"}}
+              style={{'max-width': "60%"}}
             />
             <div>
               <h2>{locationDetails.name}</h2>
