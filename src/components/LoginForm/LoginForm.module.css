@@ -9,7 +9,7 @@
 
 .label {
   margin-left: 0.5rem !important;
-  font-size: 1.5rem !important;
+  font-size: 1rem !important;
   padding: 0.5rem;
   display: inline-block !important;
   width: 150px;
@@ -19,7 +19,6 @@
 label {
   margin-left: 0.5rem !important;
   font-size: 1rem !important;
-  padding: 0.5rem;
 }
 
 .button {
