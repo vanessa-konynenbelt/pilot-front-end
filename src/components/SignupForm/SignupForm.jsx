@@ -153,7 +153,7 @@ const SignupForm = props => {
         />
       </div>
       <div>
-        <label>Willing to Pilot?</label>
+        <label className={styles.label}>Willing to Pilot?</label>
         <Checkbox
           id="pilot"
           value={pilot}
@@ -162,7 +162,7 @@ const SignupForm = props => {
         />
       </div>
       <div>
-        <label>Do you have a Kayak or SUP?</label>
+        <label className={styles.label}>Do you have a Kayak or SUP?</label>
         <Checkbox
           id="kayakSUP"
           value={kayakSUP}
@@ -171,7 +171,7 @@ const SignupForm = props => {
         />
       </div>
       <div className="form-group mb-4">
-        <label htmlFor="photo-upload" className="form-label">
+        <label htmlFor="photo-upload" className={styles.label}>
           Profile Photo  
         </label>
         <input
@@ -186,7 +186,7 @@ const SignupForm = props => {
           Sign Up
         </button>
         <Link to="/">
-          <button>Cancel</button>
+          <button className={styles.button}>Cancel</button>
         </Link>
       </div>
     </form>

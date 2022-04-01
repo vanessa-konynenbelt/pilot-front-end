@@ -7,11 +7,10 @@
   
 }
 
-.label,
-.button {
+.label {
   margin-left: 0.5rem !important;
-  
-  
+  font-size: 15px;
+  padding: 0.5rem;
 }
 
 .button {
