@@ -60,7 +60,9 @@ body {
 }
 
 h2 {
-  padding: 2rem !important; 
+  padding: 2rem !important;
+  display: flex; 
+  justify-content: center;
 }
 
 .card-link {
