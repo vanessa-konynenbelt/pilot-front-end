@@ -22,80 +22,82 @@ const Profiles = () => {
 
   return (
     <>
-    <h2>Find a swim buddy!</h2><br></br>
-      <div className={styles.container}>
-        {profiles.length ? 
-          <>
-              {profiles.map(profile=>
-              <div className="container">
-                  <div key={profile._id} className="card" style={{ width: '18rem', height: '18rem' }}>
-                    {profile.photo?
-                      <>
-                        <img 
-                          src={profile.photo}
-                          alt='me'
-                          className='card-img-top profile-pic'
-                          height>
-                          </img>
-                          <div className="card-body">
-
-                          <h5 className="card-title">{profile.name}, {profile.location}</h5>
-                          {profile.skillLevel?
+      <div className = "parent-card-group">
+        <h2>Find a swim buddy!</h2>
+          <div className="container">
+            {profiles.length ? 
+              <>
+                  {profiles.map(profile=>
+                  <div>
+                      <div key={profile._id} className="card" style={{ width: '18rem', height: '29rem' }}>
+                        {profile.photo?
                           <>
-                            <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
-                            {/* <HoverRating></HoverRating> */}
-                           </>
-                            : <p></p>
-                          }
-                          {profile.pilot?
-                            <p className="card-text">pilot</p>
-                            : <p></p>
-                          }
-                          {profile.kayakSUP?
-                            <p className="card-text">🛶</p>
-                            : <p></p>
-                          }
-                          {profile.contact?
-                             <p className="card-text">{profile.contact}</p>
-                            : <p></p>
-                          }
-                        </div>
-                          
-                      </>
-                      :
-                      <>
-                        <div className="card-body">
-                          <h5 className="card-title">{profile.name}, {profile.location}</h5>
-                          {profile.skillLevel?
+                          <div style={{height: '14rem' }}>
+                            <img 
+                              src={profile.photo}
+                              alt='me'
+                              className='card-img-top profile-pic pic'
+                              height
+                              ></img>
+                            </div>
+                              <div className="card-body">
+                              <h5 className="card-title">{profile.name}, {profile.location}</h5>
+                              {profile.skillLevel?
+                              <>
+                                <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
+                              </>
+                                : <p></p>
+                              }
+                              {profile.pilot?
+                                <p className="card-text">pilot</p>
+                                : <p></p>
+                              }
+                              {profile.kayakSUP?
+                                <p className="card-text">🛶</p>
+                                : <p></p>
+                              }
+                              {profile.contact?
+                                <p className="card-text">{profile.contact}</p>
+                                : <p></p>
+                              }
+                            </div>
+                              
+                          </>
+                          :
                           <>
-                            <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
-                            {/* <HoverRating></HoverRating> */}
-                           </>
-                            : <p></p>
-                          }
-                          {profile.pilot?
-                            <p className="card-text">pilot</p>
-                            : <p></p>
-                          }
-                          {profile.kayakSUP?
-                            <p className="card-text">🛶</p>
-                            : <p></p>
-                          }
-                          {profile.contact?
-                             <p className="card-text">{profile.contact}</p>
-                            : <p></p>
-                          }
-                        </div>
-                      </>
-                    }  
+                            <div className="card-body">
+                              <h5 className="card-title">{profile.name}, {profile.location}</h5>
+                              {profile.skillLevel?
+                              <>
+                                <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
+                                {/* <HoverRating></HoverRating> */}
+                              </>
+                                : <p></p>
+                              }
+                              {profile.pilot?
+                                <p className="card-text">pilot</p>
+                                : <p></p>
+                              }
+                              {profile.kayakSUP?
+                                <p className="card-text">🛶</p>
+                                : <p></p>
+                              }
+                              {profile.contact?
+                                <p className="card-text">{profile.contact}</p>
+                                : <p></p>
+                              }
+                            </div>
+                          </>
+                        }  
+                      </div>
                   </div>
-              </div>
-              )}
-          </>
-          :
-          <p>No profiles yet</p>
-        }
-      </div>
+                  )}
+              </>
+              :
+              <p>No profiles yet</p>
+            }
+          </div>
+        </div>
       </>
   )
 }
