@@ -28,7 +28,7 @@ const [binaryImage, setBinaryImage] = useState('')
                   state={{ location }}
                   className = "card-link"
                 >
-                <div className="card" style={{ width: '18rem', height: '18rem' }}>
+                <div className="card" style={{ width: '18rem', height: '23rem' }}>
                   {location.pictures?
                   <>
                    <div style={{height: '14rem' }}>
