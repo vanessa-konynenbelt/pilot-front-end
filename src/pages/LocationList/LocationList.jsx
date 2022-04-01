@@ -14,8 +14,6 @@ const [binaryImage, setBinaryImage] = useState('')
     })
 }, [])
 
-
-
   return (
     <>
     <div className = "parent-card-group">
@@ -28,6 +26,7 @@ const [binaryImage, setBinaryImage] = useState('')
                 key={location._id}
                 to="/location-page"
                 state={{ location }}
+                className = "card-link"
               >
               <div className="card" style={{ width: '18rem', height: '18rem' }}>
                 {location.pictures?

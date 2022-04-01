@@ -29,12 +29,11 @@
 }
 
 .container {
-  width: 90%;
-  display: grid;
-  grid-template-rows: repeat(minmax(170px, 1fr));
-	grid-template-columns: auto auto;
+  width: 90vw !important;
+  display: flex;
+  justify-content: center; 
   flex-wrap: wrap;
-  grid-gap: 20px;
+  gap: 20px;
 }
 
 @keyframes App-logo-spin {
@@ -56,6 +55,28 @@ body {
 
 .parent-card-group {
   margin-top: 112px; 
+}
+
+h2 {
+  padding: 2rem !important; 
+}
+
+.card-link {
+  text-decoration: none !important;
+}
+
+.card {
+  width: 90%;
+  height: 80px;
+  border-radius: 5%;
+  color: black;
+  text-decoration: none;
+  width: 125px;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
 }
 
 
