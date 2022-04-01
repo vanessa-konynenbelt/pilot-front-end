@@ -34,43 +34,46 @@ const LocationDetails = (props) => {
               src={locationDetails.pictures}
               alt='the view'
               className='location-pic'
-              style={{height: "300px", width: "300px"}}
+              style={{'max-width': "100%"}}
             />
             <div>
-              <p>{locationDetails.name}</p>
-              <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
+              <h2>{locationDetails.name}</h2>
+              <p>Description: {locationDetails.description ? locationDetails.description : 'no description available yet'}</p>
               <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
-              <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p> 
+              <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings available yet'}</p> 
               <Link
                 to='/edit'
                 state={{location}}
               >
-                <button>Edit</button> 
-              </Link><br />
-              <Link to='/locations'><button >Back to All Locations</button></Link>
+                <button className={style.btn}>Edit</button> 
+              </Link>
+              <Link to='/locations'><button className={style.btn}>Back to All Locations</button></Link>
             </div>
           </div>
         </div>
           <form onSubmit={handleSubmit}>
           <div className="form-group mb-3">
-					<label htmlFor="comment-input" className="form-label">
-						Comments
-					</label>
-					<input 
-						type="text"
-						className="form-control"
-						id="comment-input"
-						name="content"
-            value={commentData
-            .content}
-            onChange={handleChange}
-					/>
-				</div>
-          <button
-						type="submit"
-					>
-						Add Comment
-					</button><br></br>
+          <div className={style.comment}>
+            <label htmlFor="comment-input" className={style.label}>
+              Comments
+            </label>
+            <input 
+              type="text"
+              className={style.input}
+              id="comment-input"
+              name="content"
+              value={commentData
+              .content}
+              onChange={handleChange}
+            />
+            <button className = {style.btn}
+              type="submit"
+            >
+              Add Comment
+            </button>
+          </div>
+          </div>
+          <br></br>
           </form>
       {locationDetails?.comments?.length > 0 ?
           <table>
@@ -105,7 +108,7 @@ const LocationDetails = (props) => {
     </table>
     :
     <>
-    <h3>No Comments Yet</h3>
+    <p></p>
     </>
     }
     </>

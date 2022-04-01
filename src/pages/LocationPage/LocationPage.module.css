@@ -1,19 +1,31 @@
 .details {
   display: flex;
+  gap: 2rem; 
   width: 80%;
   margin: 9rem auto 2rem;
 }
 
-img {
-  border: 5px grey solid;
+.btn {
+  margin: 1rem !important;
 }
 
+p {
+  margin-left: 1rem; 
+}
 
+.label {
+  margin-left: 5rem !important; 
+}
 
+.input {
+  margin-left: 1rem !important;
+  width: 50vw; 
+}
 
+.comment {
+  display: flex; 
 
-
-
+}
 
 /* div {
   border: 1px solid grey;

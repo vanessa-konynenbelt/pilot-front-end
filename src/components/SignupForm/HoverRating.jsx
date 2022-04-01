@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import Star from '@mui/icons-material/Star';
 
 const labels = {
   1: 'Beginner',
@@ -33,10 +33,10 @@ export default function HoverRating() {
       onChangeActive={(event, newHover) => {
         setHover(newHover);
       }}
-      emptyIcon={<StarOutlineIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+      emptyIcon={<Star style={{ color: 'white'}} fontSize="inherit" />}
     />
       {value !== null && (
-        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+        <Box style={{ color: 'white'}} sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
       )}
     </Box>
   );

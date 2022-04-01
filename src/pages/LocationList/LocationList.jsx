@@ -28,10 +28,12 @@ const [binaryImage, setBinaryImage] = useState('')
                   state={{ location }}
                   className = "card-link"
                 >
-                <div className="card" style={{ width: '18rem', height: '18rem' }}>
+                <div className="card" style={{ width: '18rem', height: '25rem' }}>
                   {location.pictures?
                   <>
-                    <img className="card-img-top" src={location.pictures} height="200"  alt="..."></img>
+                   <div style={{height: '14rem' }}>
+                    <img className="card-img-top pic" src={location.pictures} alt="..."></img>
+                    </div>
                     <div className="card-body">
                       <h5 className="card-title">{location.name}</h5>
                       <p className="card-text">{location.description}</p>
@@ -50,7 +52,6 @@ const [binaryImage, setBinaryImage] = useState('')
                 </div>
               </Link>
             ))}
-            <a className="btn btn-primary m-3" href="/add-location">Add a swim spot</a>
           </div>
         </>
         :

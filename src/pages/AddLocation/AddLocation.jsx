@@ -1,6 +1,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { getLocation, handleApiSubmit } from '../../services/locations'
+import style from './AddLocation.module.css'
 
 function AddLocation(props) {
   const formElement = useRef()
@@ -57,10 +58,11 @@ function AddLocation(props) {
 	return (
 		<>
 		<div className = "parent-card-group">
-			<h1>Add Location</h1>
+			<h2>Add Location</h2>
+			<div className={style.main}>
 			<form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
-					<label htmlFor="name-input" className="form-label">
+					<label htmlFor="name-input" className={style.label}>
 						Location Name
 					</label>
 					<input 
@@ -75,7 +77,7 @@ function AddLocation(props) {
 					/>
 				</div><br />
 				<div className="form-group mb-3">
-					<label htmlFor="description-input" className="form-label">
+					<label htmlFor="description-input" className={style.label}>
 						Location Description
 					</label>
 					<input 
@@ -88,7 +90,7 @@ function AddLocation(props) {
 					/>
 				</div><br />
 				<div className="form-group mb-3">
-					<label htmlFor="name-input" className="form-label">
+					<label htmlFor="name-input" className={style.label}>
 						Entry Points
 					</label>
 					<input 
@@ -101,7 +103,7 @@ function AddLocation(props) {
 					/>
 				</div><br />
 				<div className="form-group mb-3">
-					<label htmlFor="rating-input" className="form-label">
+					<label htmlFor="rating-input" className={style.label}>
 						Rating
 					</label>
 					<input 
@@ -109,13 +111,15 @@ function AddLocation(props) {
 						className="form-control"
 						id="rating-input"
 						name="rating"
+						min="0"
+						max="5"
 						required
             value={formData.rating}
             onChange={handleChange}
 					/>
 				</div>
 				<div className="form-group mb-3">
-					<label htmlFor="photo-upload" className="form-label">
+					<label htmlFor="photo-upload" className={style.label}>
 						Pictures
 					</label>
 					<input 
@@ -128,12 +132,13 @@ function AddLocation(props) {
 				</div><br />
         <button
 						type="submit"
-						className="btn btn-primary btn-fluid"
+						className={style.btn}
 						disabled={!validForm}
 					>
 						Add Swim Location
 					</button>
 			</form>
+			</div>
 		</div>
 		</>
 	)
