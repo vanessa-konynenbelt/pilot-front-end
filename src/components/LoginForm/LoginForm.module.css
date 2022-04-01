@@ -4,11 +4,17 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
+  
 }
 
-.label,
+.label {
+  margin-left: 0.5rem !important;
+  font-size: 15px;
+  padding: 0.5rem;
+}
+
 .button {
-  margin-right: 0.5rem;
+  margin: 10px !important;
 }
 
 .inputContainer {
