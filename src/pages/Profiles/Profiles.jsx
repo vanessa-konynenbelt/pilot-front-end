@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import * as profileService from '../../services/profileService'
-import HoverRating from '../../components/SignupForm/HoverRating'
-import styles from './Profiles.module.css'
 
 
 const Profiles = () => {
