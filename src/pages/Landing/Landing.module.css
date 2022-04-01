@@ -5,6 +5,10 @@
 }
 
 body {
-  background-image: url('bg-masthead.jpg');
   background-image: url('ows1.jpeg');
+  width: 100vw;
+}
+
+h1 {
+  /* color: black !important; */
 }
