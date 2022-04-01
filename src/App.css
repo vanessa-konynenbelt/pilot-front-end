@@ -28,14 +28,14 @@
   color: #61dafb;
 }
 
-.container {
+/* .container {
   width: 90%;
   display: grid;
   grid-template-rows: repeat(minmax(170px, 1fr));
 	grid-template-columns: auto auto;
   flex-wrap: wrap;
   grid-gap: 20px;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
