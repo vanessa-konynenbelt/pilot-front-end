@@ -50,7 +50,6 @@ const [binaryImage, setBinaryImage] = useState('')
                 </div>
               </Link>
             ))}
-            <a className="btn btn-primary m-3" href="/add-location">Add a swim spot</a>
           </div>
         </>
         :
