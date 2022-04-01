@@ -11,7 +11,7 @@ This app was conceptualized, designed, and coded by [Vanessa Konynenbelt](https:
 
 **Check out the deployed application [here](https://vac-pilot.herokuapp.com/)**
 
-IMAGES
+![](public/Pilot.png)
 
 This app was planned using Trello. You can check out our user stories, ERD, and wireframe [here](https://trello.com/b/0kOV1lFs/pilot).
 
