@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation, Link } from "react-router-dom";
-import './LocationPage.module.css'
+import style from './LocationPage.module.css'
 
 const LocationDetails = (props) => {
   const [locationDetails, setLocationDetails] = useState({})
@@ -28,24 +28,29 @@ const LocationDetails = (props) => {
   return ( 
     <>
         <div className = "parent-card-group">
+            
+          <div className={style.details}>
             <img 
-            src={locationDetails.pictures}
-            alt='the view'
-            className='location-pic'
+              src={locationDetails.pictures}
+              alt='the view'
+              className='location-pic'
+              style={{height: "300px", width: "300px"}}
             />
-            <p>{locationDetails.name}</p>
-            <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
-            <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
-            <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p> 
-        <Link
-          to='/edit'
-          state={{location}}
-        >
-          <button>Edit</button> 
-        </Link><br />
-            <Link to='/locations'><button >Back to All Locations</button></Link>
-
+            <div>
+              <p>{locationDetails.name}</p>
+              <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
+              <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
+              <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p> 
+              <Link
+                to='/edit'
+                state={{location}}
+              >
+                <button>Edit</button> 
+              </Link><br />
+              <Link to='/locations'><button >Back to All Locations</button></Link>
+            </div>
           </div>
+        </div>
           <form onSubmit={handleSubmit}>
           <div className="form-group mb-3">
 					<label htmlFor="comment-input" className="form-label">
@@ -82,7 +87,7 @@ const LocationDetails = (props) => {
             <td>{comment.content}</td>
             <td>{comment.owner.name}</td>
             {props.user.profile === comment.owner?._id ?
-              <td><button
+              <td><button className="cmnt-btn"
                 onClick={()=>
                   props.handleDeleteComment(locationDetails, comment._id)}
                 user={props.user}

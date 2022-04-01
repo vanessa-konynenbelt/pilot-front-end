@@ -28,6 +28,7 @@
   color: #61dafb;
 }
 
+
 .container {
   width: 90vw !important;
   display: flex;
@@ -35,6 +36,7 @@
   flex-wrap: wrap;
   gap: 20px;
 }
+
 
 @keyframes App-logo-spin {
   from {
