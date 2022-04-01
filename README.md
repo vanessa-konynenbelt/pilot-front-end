@@ -26,4 +26,8 @@ This app was planned using Trello. You can check out our user stories, ERD, and 
 
 ## Next Steps
 
-ICEBOX STUFF
+-Implement chat functionality (potentially Socket.IO)
+-Implement Bing Maps API so that added locations will be displayed on a map
+-Have the map be interactive!
+-Mobile compatible 
+-Request location via browser
