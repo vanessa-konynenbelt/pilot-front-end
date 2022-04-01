@@ -6,22 +6,30 @@
   margin-bottom: 50px;
 }
 
-.label {
-  margin-right: .5rem;
-  margin-left: 0.5rem !important;
-  font-size: 15px;
-  padding: 0.5rem;
-}
-
 .inputContainer {
   margin-bottom: 1rem;
 }
 
-label {
-  font-size: 15px;
+.label {
+  margin-left: 0.5rem !important;
+  font-size: 1rem !important;
   padding: 0.5rem;
+  display: inline-block !important;
+  width: 150px;
+  text-align: right;
+}
+
+label {
+  margin-left: 0.5rem !important;
+  font-size: 1rem !important;
+  /* padding: 0.5rem; */
+}
+
+.space {
+  margin-bottom: 18rem;
 }
 
 .button {
   margin-right: 0.5rem !important;
 }
+

@@ -74,6 +74,7 @@ const SignupForm = props => {
   }
 
   return (
+    <div className = "signup-flex">
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
@@ -113,7 +114,7 @@ const SignupForm = props => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="confirm" className={styles.label}>
+        <label htmlFor="confirm" className={styles.label, styles.space}>
           Confirm Password*
         </label>
         <input
@@ -130,14 +131,15 @@ const SignupForm = props => {
         <input
           type="text"
           autoComplete="off"
+          placeholder="your city"
           id="location"
           value={location}
           name="location"
           onChange={handleChange}
         />
-      </div>
+      </div> 
       <div className={styles.inputContainer}>
-        <label htmlFor="skillLevel" className={styles.label}>Skill Level</label>
+        <label htmlFor="skillLevel" className= {styles.label, styles.skill} id="skill">Skill Level</label>
         <HoverRating skillLevel = {{skillLevel}}></HoverRating>
       </div>
       <div className={styles.inputContainer}>
@@ -145,6 +147,7 @@ const SignupForm = props => {
           <input
           type="text"
           autoComplete="off"
+          placeholder="your email"
           id="location"
           value={contact}
           name="contact"
@@ -190,6 +193,7 @@ const SignupForm = props => {
         </Link>
       </div>
     </form>
+    </div>
   )
 }
 
