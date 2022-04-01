@@ -38,9 +38,9 @@ const LocationDetails = (props) => {
             />
             <div>
               <h2>{locationDetails.name}</h2>
-              <p>Description: {locationDetails.description ? locationDetails.description : 'no description availble yet'}</p>
+              <p>Description: {locationDetails.description ? locationDetails.description : 'no description available yet'}</p>
               <p>Entry Points: {locationDetails.entryPoints ? locationDetails.entryPoints : 'none available yet'}</p>
-              <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings availble yet'}</p> 
+              <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings available yet'}</p> 
               <Link
                 to='/edit'
                 state={{location}}
