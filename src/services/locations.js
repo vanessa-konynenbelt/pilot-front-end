@@ -5,8 +5,9 @@ const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/locations`
 function create(location) {
   return fetch(BASE_URL, {
     method: 'POST',
-    headers: {'Authorization': `Bearer ${tokenService.getToken()}`
-  },
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
     body: location
   })
   .then(res => res.json())
@@ -26,14 +27,12 @@ function createComment(location, comment) {
 
 function getAll() {
   return fetch(BASE_URL)
-  .then(res => res.json())
+    .then(res => res.json())
 }
 
 function getLocation(name) {
-  //  new Map('MyMap')
-  console.log('name is', name)
   return fetch (`${BASE_URL}/${name}`)
-  .then(res => res.arrayBuffer())
+    .then(res => res.arrayBuffer())
 }
 
 function update(location) {
@@ -62,9 +61,7 @@ function show(location) {
 function deleteOne(location, comment) {
   return fetch(`${BASE_URL}/${location}/comments/${comment}`, {
     method: 'DELETE',
-    headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`
-    },
+    headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
   })
   .then(res => res.json())
 }
