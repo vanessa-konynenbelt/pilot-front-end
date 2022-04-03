@@ -1,56 +1,46 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-//import NavBar from './components/NavBar/NavBar'
+
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import LocationDetails from './pages/LocationPage/LocationPage'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
-import * as authService from './services/authService'
-import './App.css'
 import AddLocation from './pages/AddLocation/AddLocation'
-import LocationList from "./pages/LocationList/LocationList"
-import { create, getAll, getLocation, update, createComment, show, deleteOne} from './services/locations'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import LocationList from './pages/LocationList/LocationList'
 import EditLocation from './pages/EditLocation/EditLocation'
 import Header from '../src/components/header'
-//import Map from 'react-map-gl'
 
+import * as authService from './services/authService'
+import * as locationService from './services/locations'
 
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 
   const App = () => {
-    const [user, setUser] = useState(authService.getUser())
     const navigate = useNavigate()
+    const [user, setUser] = useState(authService.getUser())
     const [locations, setLocations] = useState([])
-    const [comments, setComments] = useState(null)
 
   const handleAddLocation = async newLocationData => {
-
-    console.log('NEW LOCATION', newLocationData)
     const newLocation = await create(newLocationData)
-    console.log('HIIIIIIIIIII', newLocation)
     setLocations([...locations, newLocation])
     navigate('/locations')
   }
 
   const handleAddComment = async (locationId, newCommentData) => {
-    console.log('NEW COMMENT', newCommentData)
-    const updatedLocation = await createComment(locationId, newCommentData)
-
+    const updatedLocation = await locationService.createComment(locationId, newCommentData)
     const newLocationsArray = locations.map(location => 
       location._id === updatedLocation._id ? updatedLocation : location
     )
     setLocations(newLocationsArray)
-    const location = await show(updatedLocation._id)
-    console.log(location)
+    const location = await locationService.show(updatedLocation._id)
     return location
   }
   
   const handleDeleteComment = (location, comId)  => {
-    // delete comment by Id
-    deleteOne(location._id, comId)
+    locationService.deleteOne(location._id, comId)
     .then(deletedComment => {
       setLocations(locations.filter(comment => comment._id !== comId))
     })
@@ -59,7 +49,7 @@ import Header from '../src/components/header'
 
 
   const handleUpdateLocation= updatedLocationData => {
-    update(updatedLocationData)
+    locationService.update(updatedLocationData)
     .then(updatedLocation => {
       const newLocationsArray = locations.map(location => 
         location._id === updatedLocation._id ? updatedLocation : location)
@@ -79,15 +69,8 @@ import Header from '../src/components/header'
   }
 
   useEffect(() => {
-    getAll()
+    locationService.getAll()
     .then(allLocations => setLocations(allLocations))
-  }, [])
-
-
-  useEffect(() => {
-    getAll()
-    .then(allComments => setComments(allComments)
-    )
   }, [])
 
   return (
