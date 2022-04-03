@@ -45,8 +45,7 @@ import './App.css'
       setLocations(locations.filter(comment => comment._id !== comId))
     })
     window.location.reload()
-    }
-
+  }
 
   const handleUpdateLocation= updatedLocationData => {
     locationService.update(updatedLocationData)
@@ -75,7 +74,7 @@ import './App.css'
 
   return (
     <>
-       <Header user={user} handleLogout={handleLogout} />
+      <Header user={user} handleLogout={handleLogout} />
       <Routes>
         <Route 
           path="/" 
@@ -99,17 +98,33 @@ import './App.css'
         />
         <Route 
           path='/add-location' 
-          element={<AddLocation handleAddLocation={handleAddLocation} />} />
+          element={<AddLocation handleAddLocation={handleAddLocation} />} 
+        />
         <Route 
           path='/locations'
-          element= {<LocationList locations={locations} />}/>
-          <Route
+          element= {<LocationList locations={locations} />}
+        />
+        <Route
           path="/location-page"
-          element={<LocationDetails user={user} locations={locations} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} />}/>
+          element={ 
+              <LocationDetails 
+                  user={user} 
+                  locations={locations} 
+                  handleAddComment={handleAddComment} 
+                  handleDeleteComment={handleDeleteComment} 
+              />
+          }
+        />
         <Route 
           path='/edit' 
-          element= {<EditLocation user={user} locations={locations} handleUpdateLocation={handleUpdateLocation} />}/>
-        
+          element= {
+              <EditLocation 
+                  user={user} 
+                  locations={locations} 
+                  handleUpdateLocation={handleUpdateLocation} 
+              />
+          }
+        />
       </Routes>
     </>
   )
