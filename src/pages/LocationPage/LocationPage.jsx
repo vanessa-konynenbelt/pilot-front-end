@@ -1,21 +1,20 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import style from './LocationPage.module.css'
 
 const LocationDetails = (props) => {
-  const [locationDetails, setLocationDetails] = useState({})
   let location = useLocation()
+  const [locationDetails, setLocationDetails] = useState({})
   const [commentData, setCommentData] = useState({
     content: '',
   })
   
   useEffect(() => {
-    // getAll(location.state.location.name)
     setLocationDetails(location.state.location)
   }, [])
 
   const handleChange = evt => {
-  setCommentData({ ...commentData, [evt.target.name]: evt.target.value })
+    setCommentData({ ...commentData, [evt.target.name]: evt.target.value })
   }
 
   const handleSubmit = async evt => {
@@ -24,11 +23,9 @@ const LocationDetails = (props) => {
     setLocationDetails(updatedLocation)
   }
 
-
   return ( 
     <>
         <div className = "parent-card-group">
-            
           <div className={style.details}>
             <img 
               src={locationDetails.pictures}
@@ -62,8 +59,7 @@ const LocationDetails = (props) => {
               className={style.input}
               id="comment-input"
               name="content"
-              value={commentData
-              .content}
+              value={commentData.content}
               onChange={handleChange}
             />
             <button className = {style.btn}
@@ -84,7 +80,6 @@ const LocationDetails = (props) => {
         </tr>
     </thead>
     <tbody>
-      
           {locationDetails.comments.map((comment) => (
           <tr key={comment._id}>
             <td>{comment.content}</td>

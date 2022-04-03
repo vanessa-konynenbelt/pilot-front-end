@@ -24,7 +24,7 @@ import './App.css'
     const [locations, setLocations] = useState([])
 
   const handleAddLocation = async newLocationData => {
-    const newLocation = await create(newLocationData)
+    const newLocation = await locationService.create(newLocationData)
     setLocations([...locations, newLocation])
     navigate('/locations')
   }
@@ -39,15 +39,13 @@ import './App.css'
     return location
   }
   
-  const handleDeleteComment = (location, comId)  => {
-    locationService.deleteOne(location._id, comId)
-    .then(deletedComment => {
-      setLocations(locations.filter(comment => comment._id !== comId))
-    })
-    window.location.reload()
+  const handleDeleteComment = async (location, comId)  => {
+    const updatedLocation = await locationService.deleteOne(location._id, comId)
+    setLocations(updatedLocation)
+    // window.location.reload()
   }
 
-  const handleUpdateLocation= updatedLocationData => {
+  const handleUpdateLocation = updatedLocationData => {
     locationService.update(updatedLocationData)
     .then(updatedLocation => {
       const newLocationsArray = locations.map(location => 
@@ -69,7 +67,7 @@ import './App.css'
 
   useEffect(() => {
     locationService.getAll()
-    .then(allLocations => setLocations(allLocations))
+      .then(allLocations => setLocations(allLocations))
   }, [])
 
   return (
