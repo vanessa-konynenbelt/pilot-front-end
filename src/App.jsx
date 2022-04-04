@@ -29,6 +29,10 @@ import './App.css'
     navigate('/locations')
   }
 
+  useEffect(() => {
+    console.log(locations)
+  }, [locations])
+
   const handleAddComment = async (locationId, newCommentData) => {
     const updatedLocation = await locationService.createComment(locationId, newCommentData)
     const newLocationsArray = locations.map(location => 

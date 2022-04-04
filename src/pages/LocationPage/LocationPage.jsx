@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import style from './LocationPage.module.css'
+import DetailCard from "../../components/DetailCard/DetailCard";
 
 const LocationDetails = (props) => {
   let location = useLocation()
@@ -71,35 +72,25 @@ const LocationDetails = (props) => {
           </div>
           <br></br>
           </form>
-      {locationDetails?.comments?.length > 0 ?
+            {locationDetails?.comments?.length > 0 ?
           <table>
-      <thead>
-        <tr>
-          <th>Comment</th>
-          <th>Posted By</th>
-        </tr>
-    </thead>
-    <tbody>
-          {locationDetails.comments.map((comment) => (
-          <tr key={comment._id}>
-            <td>{comment.content}</td>
-            <td>{comment.owner.name}</td>
-            {props.user.profile === comment.owner?._id ?
-              <td><button className="cmnt-btn"
-                onClick={()=>
-                  props.handleDeleteComment(locationDetails, comment._id)}
-                user={props.user}
-              >
-                X
-              </button></td>
-                
-                  :
-              <td></td>
-            }
-          </tr> 
-          ))}
-        
-    </tbody>
+            <thead>
+              <tr>
+                <th>Comment</th>
+                <th>Posted By</th>
+              </tr>
+          </thead>
+          <tbody>
+                {locationDetails.comments.map((comment) => (
+                  <DetailCard
+                    key={comment._id}
+                    comment={comment}
+                    handleDeleteComment={props.handleDeleteComment}
+                    locationDetails={locationDetails}
+                    user={props.user}
+                  />
+                ))}
+          </tbody>
     </table>
     :
     <>
