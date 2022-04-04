@@ -19,19 +19,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
   const App = () => {
-    const navigate = useNavigate()
-    const [user, setUser] = useState(authService.getUser())
-    const [locations, setLocations] = useState([])
+  const navigate = useNavigate()
+  const [user, setUser] = useState(authService.getUser())
+  const [locations, setLocations] = useState([])
 
   const handleAddLocation = async newLocationData => {
     const newLocation = await locationService.create(newLocationData)
     setLocations([...locations, newLocation])
     navigate('/locations')
   }
-
-  useEffect(() => {
-    console.log(locations)
-  }, [locations])
 
   const handleAddComment = async (locationId, newCommentData) => {
     const updatedLocation = await locationService.createComment(locationId, newCommentData)

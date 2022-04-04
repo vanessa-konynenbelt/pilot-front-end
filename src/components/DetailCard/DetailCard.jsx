@@ -1,4 +1,4 @@
-import * as styles from './DetailCard.module.css'
+import style from './DetailCard.module.css'
 
 const DetailCard = ({ comment, handleDeleteComment, locationDetails, user }) => {
   return ( 
@@ -9,7 +9,7 @@ const DetailCard = ({ comment, handleDeleteComment, locationDetails, user }) => 
         {user.profile === comment.owner._id ?
           <td>
             <button 
-              className={styles.btn}
+              className={style.btn}
               onClick={ ()=> handleDeleteComment(locationDetails, comment._id) }
             >
               X
