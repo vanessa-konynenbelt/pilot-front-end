@@ -35,8 +35,6 @@ import './App.css'
       location._id === updatedLocation._id ? updatedLocation : location
     )
     setLocations(newLocationsArray)
-    const location = await locationService.show(updatedLocation._id)
-    return location
   }
   
   const handleDeleteComment = async (location, comId)  => {

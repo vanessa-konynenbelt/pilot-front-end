@@ -18,8 +18,7 @@ const LocationDetails = (props) => {
 
   const handleSubmit = async (evt, commentData) => {
     evt.preventDefault()
-    const updatedLocation= await props.handleAddComment(locationDetails._id, commentData)
-    setLocationDetails(updatedLocation)
+    props.handleAddComment(locationDetails._id, commentData)
   }
 
   return (
