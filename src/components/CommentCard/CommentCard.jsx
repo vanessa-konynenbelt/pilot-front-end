@@ -10,7 +10,7 @@ const DetailCard = ({ comment, handleDeleteComment, locationDetails, user }) => 
           <td>
             <button 
               className={style.btn}
-              onClick={ ()=> handleDeleteComment(locationDetails, comment._id) }
+              onClick={()=> handleDeleteComment(locationDetails._id, comment._id)}
             >
               X
             </button>

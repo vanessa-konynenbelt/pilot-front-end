@@ -31,15 +31,14 @@ import './App.css'
 
   const handleAddComment = async (locationId, newCommentData) => {
     const updatedLocation = await locationService.createComment(locationId, newCommentData)
-    const newLocationsArray = locations.map(location => 
-      location._id === updatedLocation._id ? updatedLocation : location
+    const newLocationsArray = locations.map(location => location._id === updatedLocation._id ? updatedLocation : location
     )
     setLocations(newLocationsArray)
   }
   
-  const handleDeleteComment = async (location, comId)  => {
-    const updatedLocation = await locationService.deleteOne(location._id, comId)
-    setLocations(locations.map(locat => locat._id === location._id ? updatedLocation : locat))
+  const handleDeleteComment = async (locationId, comId)  => {
+    const updatedLocation = await locationService.deleteOne(locationId, comId)
+    setLocations(locations.map(locatation => locatation._id === locationId ? updatedLocation : locatation))
   }
 
   const handleUpdateLocation = updatedLocationData => {
