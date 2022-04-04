@@ -41,62 +41,62 @@ const LocationDetails = (props) => {
               <p>Rating: {locationDetails.rating ? locationDetails.rating : 'no ratings available yet'}</p> 
               <Link
                 to='/edit'
-                state={{location}}
+                state={{ location }}
               >
                 <button className={style.btn}>Edit</button> 
               </Link>
-              <Link to='/locations'><button className={style.btn}>Back to All Locations</button></Link>
+              <Link to='/locations'>
+                <button className={style.btn}>
+                  Back to All Locations
+                </button>
+              </Link>
             </div>
           </div>
         </div>
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="form-group mb-3">
-          <div className={style.comment}>
-            <label htmlFor="comment-input" className={style.label}>
-              Comments
-            </label>
-            <input 
-              type="text"
-              className={style.input}
-              id="comment-input"
-              name="content"
-              value={commentData.content}
-              onChange={handleChange}
-            />
-            <button className = {style.btn}
-              type="submit"
-            >
-              Add Comment
-            </button>
-          </div>
+            <div className={style.comment}>
+              <label htmlFor="comment-input" className={style.label}>
+                Comments
+              </label>
+              <input 
+                type="text"
+                className={style.input}
+                id="comment-input"
+                name="content"
+                value={commentData.content}
+                onChange={handleChange}
+              />
+              <button className = {style.btn}
+                type="submit"
+              >
+                Add Comment
+              </button>
+            </div>
           </div>
           <br></br>
-          </form>
-            {locationDetails?.comments?.length > 0 ?
+        </form>
+        {locationDetails.comments?.length > 0 &&
           <table>
             <thead>
               <tr>
                 <th>Comment</th>
                 <th>Posted By</th>
               </tr>
-          </thead>
-          <tbody>
-                {locationDetails.comments.map((comment) => (
-                  <DetailCard
-                    key={comment._id}
-                    comment={comment}
-                    handleDeleteComment={props.handleDeleteComment}
-                    locationDetails={locationDetails}
-                    user={props.user}
-                  />
-                ))}
-          </tbody>
-    </table>
-    :
-    <>
-    <p></p>
-    </>
-    }
+            </thead>
+            <tbody>
+                  {locationDetails.comments.map((comment) => (
+                    <DetailCard
+                      key={comment._id}
+                      comment={comment}
+                      handleDeleteComment={props.handleDeleteComment}
+                      locationDetails={locationDetails}
+                      user={props.user}
+                    />
+                  ))}
+            </tbody>
+          </table>
+          }
     </>
    )
 }
