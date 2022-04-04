@@ -9,16 +9,7 @@ p {
   margin-left: 1rem; 
 }
 
-.label {
-  margin-left: 5rem !important; 
-}
-
-.input {
-  margin-left: 1rem !important;
-  width: 50vw; 
-}
-
-.comment {
-  display: flex; 
+.btn {
+  margin: 1rem !important;
 }
 

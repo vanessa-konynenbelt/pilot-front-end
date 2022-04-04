@@ -41,8 +41,7 @@ import './App.css'
   
   const handleDeleteComment = async (location, comId)  => {
     const updatedLocation = await locationService.deleteOne(location._id, comId)
-    setLocations(updatedLocation)
-    // window.location.reload()
+    setLocations(locations.map(locat => locat._id === location._id ? updatedLocation : locat))
   }
 
   const handleUpdateLocation = updatedLocationData => {

@@ -1,30 +1,29 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import style from './LocationPage.module.css'
-import DetailCard from "../../components/DetailCard/DetailCard";
+import * as locationService from '../../services/locations'
+import CommentCard from "../../components/CommentCard/CommentCard";
+import CommentForm from "../../components/CommentForm/CommentForm";
 
 const LocationDetails = (props) => {
   let location = useLocation()
-  const [locationDetails, setLocationDetails] = useState({})
-  const [commentData, setCommentData] = useState({
-    content: '',
-  })
-  
+  const [locationDetails, setLocationDetails] = useState(null)
+
   useEffect(() => {
-    setLocationDetails(location.state.location)
-  }, [])
+    (async() => {
+      const currLocation = await locationService.show(location.state.location._id)
+      setLocationDetails(currLocation)
+    })()
+  }, [props.locations])
 
-  const handleChange = evt => {
-    setCommentData({ ...commentData, [evt.target.name]: evt.target.value })
-  }
-
-  const handleSubmit = async evt => {
+  const handleSubmit = async (evt, commentData) => {
     evt.preventDefault()
     const updatedLocation= await props.handleAddComment(locationDetails._id, commentData)
     setLocationDetails(updatedLocation)
   }
 
-  return ( 
+  return (
+    locationDetails &&
     <>
         <div className = "parent-card-group">
           <div className={style.details}>
@@ -53,29 +52,7 @@ const LocationDetails = (props) => {
             </div>
           </div>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group mb-3">
-            <div className={style.comment}>
-              <label htmlFor="comment-input" className={style.label}>
-                Comments
-              </label>
-              <input 
-                type="text"
-                className={style.input}
-                id="comment-input"
-                name="content"
-                value={commentData.content}
-                onChange={handleChange}
-              />
-              <button className = {style.btn}
-                type="submit"
-              >
-                Add Comment
-              </button>
-            </div>
-          </div>
-          <br></br>
-        </form>
+        <CommentForm handleSubmit={handleSubmit} />
         {locationDetails.comments?.length > 0 &&
           <table>
             <thead>
@@ -86,7 +63,7 @@ const LocationDetails = (props) => {
             </thead>
             <tbody>
                   {locationDetails.comments.map((comment) => (
-                    <DetailCard
+                    <CommentCard
                       key={comment._id}
                       comment={comment}
                       handleDeleteComment={props.handleDeleteComment}

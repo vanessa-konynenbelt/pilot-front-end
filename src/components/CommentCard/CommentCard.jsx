@@ -1,4 +1,4 @@
-import style from './DetailCard.module.css'
+import style from './CommentCard.module.css'
 
 const DetailCard = ({ comment, handleDeleteComment, locationDetails, user }) => {
   return ( 
