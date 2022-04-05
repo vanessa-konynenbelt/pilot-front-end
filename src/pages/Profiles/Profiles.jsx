@@ -26,8 +26,8 @@ const Profiles = () => {
             {profiles.length ? 
               <>
                   {profiles.map(profile=>
-                  <div>
-                      <div key={profile._id} className="card" style={{ width: '18rem', height: '29rem' }}>
+                  <div key={profile._id}>
+                      <div className="card" style={{ width: '18rem', height: '29rem' }}>
                         {profile.photo?
                           <>
                           <div style={{height: '14rem' }}>
