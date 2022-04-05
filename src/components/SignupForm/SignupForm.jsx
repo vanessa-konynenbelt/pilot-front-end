@@ -18,7 +18,6 @@ const SignupForm = props => {
     pilot: false,
     kayakSUP: false,
     photo: '',
-
   })
 
   const handleChange = e => {
@@ -148,11 +147,10 @@ const SignupForm = props => {
           type="text"
           autoComplete="off"
           placeholder="your email"
-          id="location"
+          id="contact"
           value={contact}
           name="contact"
           onChange={handleChange}
-
         />
       </div>
       <div>

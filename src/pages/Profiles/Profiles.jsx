@@ -46,14 +46,14 @@ const Profiles = () => {
                               </>
                                 : <p></p>
                               }
-                              {profile.pilot?
+                              {/* {profile.pilot?
                                 <p className="card-text">pilot</p>
                                 : <p></p>
                               }
                               {profile.kayakSUP?
                                 <p className="card-text">🛶</p>
                                 : <p></p>
-                              }
+                              } */}
                               {profile.contact?
                                 <p className="card-text">{profile.contact}</p>
                                 : <p></p>
@@ -68,7 +68,6 @@ const Profiles = () => {
                               {profile.skillLevel?
                               <>
                                 <p className="card-text">{levels[profile.skillLevel]} swimmer</p>
-                                {/* <HoverRating></HoverRating> */}
                               </>
                                 : <p></p>
                               }
