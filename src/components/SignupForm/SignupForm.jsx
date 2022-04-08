@@ -20,6 +20,8 @@ const SignupForm = props => {
     photo: '',
   })
 
+  useEffect(()=>{console.log('formdata', formData)}, [formData])
+
   const handleChange = e => {
     props.updateMessage('')
     setFormData({
@@ -40,7 +42,6 @@ const SignupForm = props => {
     })
   }
 
-  useEffect(()=>{console.log('formdata', formData)}, [formData])
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -138,8 +139,8 @@ const SignupForm = props => {
         />
       </div> 
       <div className={styles.inputContainer}>
-        <label htmlFor="skillLevel" className= {styles.label, styles.skill} id="skill">Skill Level</label>
-        <HoverRating skillLevel = {{skillLevel}}></HoverRating>
+        <label htmlFor="skillLevel" id="skill">Skill Level</label>
+        <HoverRating handleChange = {handleChange} />
       </div>
       <div className={styles.inputContainer}>
           <label htmlFor="skillLevel" className={styles.label}>Contact Info</label>
